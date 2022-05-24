@@ -1,0 +1,18 @@
+<%- include ("./partials/head.ejs") %>
+<section class="teacher-info-container">
+    <article class="teacher-info">
+        <div class="teacher-info-pic">
+            <img src="<%- document.data.teacherpic.url %>">
+        </div>
+        <div>
+            <h1 class="teacher-info-name"><%- document.data.teachername[0].text %></h1>
+            <h2>Vakken</h2>
+            <p><%- document.data.vakken.length === 0 ? "None" : document.data.vakken[0].text %></p>
+            <h2>Beschrijving</h2>
+            <p><%- document.data.beschrijving.length === 0 ? "None" : document.data.beschrijving[0].text %></p>
+            <h2>Hobbies</h2>
+            <p><%- document.data.hobbies.length === 0 ? "None" : document.data.hobbies[0].text %></p>
+        </div>
+    </article>
+</section>
+<%- include ("./partials/footer.ejs") %>
