@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static("public"));
-
+console.log("hey")
 app.get("/", async (req, res) => {
   const document = await client.getAllByType("teacher-card");
   res.render("page", { document, currentDate });
