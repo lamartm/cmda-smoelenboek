@@ -14,3 +14,18 @@ document.getElementById("search-teacher").addEventListener("submit", (d) => {
     }
   });
 });
+
+// Scrollen
+function goPrecious() {
+  document.querySelector('html').scrollBy({ 
+    top: -320,
+    behavior: 'smooth' 
+  });
+}
+
+function goNext() {
+  document.querySelector('html').scrollBy({ 
+    top: 320,
+    behavior: 'smooth' 
+  });
+}
