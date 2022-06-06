@@ -1,6 +1,9 @@
 <%- include ("./partials/head.ejs") %>
 <form id="search-teacher">
-    <input type="text" placeholder="Zoek voor een leeraar">
+    <button class="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
+    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
+    <div id="keyboard-bg"></div>
+    <div id="keyboard" class="simple-keyboard"></div>
 </form>
 <div class="container">
     <section class="teachers">
@@ -26,9 +29,10 @@
 </div>
 
 <nav>
-    <button class="button2" onClick="goPrecious()">Up</button>
-    <button class="button" onClick="goNext()">Down</button>
+    <button class="button2" onClick="goPrecious()"><img class="icon" src="/images/up.svg"></button>
+    <button class="button" onClick="goNext()"><img class="icon" src="/images/down.svg"></button>
 </nav>
 
-<script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+<script type="module" src="/js/script.js"></script>
 <%- include ("./partials/footer.ejs") %>
