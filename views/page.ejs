@@ -1,4 +1,5 @@
 <%- include ("./partials/head.ejs") %>
+
 <form id="search-teacher">
     <button class="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
     <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
@@ -12,29 +13,36 @@
         <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
             <a href="<%= encodedURL %>" class="teacher-link">
                 <article class="teacher bck-grey">
-                    <img src="<%- teacher.data.teacherpic.url %>" class="unavailable"/>
+                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
                     <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
                 </article>
             </a>
         <% } else{ %> 
             <a href="<%= encodedURL %>" class="teacher-link">
                 <article class="teacher">
-                    <img src="<%- teacher.data.teacherpic.url %>"/>
+                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
                     <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
                 </article>
             </a>
         <% } %> 
     <% }) %>
+    <% for (let i = 0; i < 130; i++) { %>
+        <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+        <a href="<%= encodedURL %>" class="teacher-link">
+            <article class="teacher">
+                <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
+                <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
+            </article>
+        </a>
+    <% } %>
     </section>
 </div>
 
 <nav>
-
-    <button onClick="goPrecious()"><img class="icon" src="/images/up.svg"></button>
-    <button onClick="goNext()"><img class="icon" src="/images/down.svg"></button>
- 
+    <button id="button2"><img class="icon" src="/images/up.svg"></button>
+    <button id="button"><img class="icon" src="/images/down.svg"></button>
 </nav>
 
+<script type="module" src="/js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
-<script type="module" src="/js/script.js"></script>
 <%- include ("./partials/footer.ejs") %>

@@ -1,8 +1,12 @@
 const Keyboard = window.SimpleKeyboard.default;
 
-const teachers = document.getElementsByClassName("teacher");
+const teachers = document.getElementsByClassName("teacher-link");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
+const button1 = document.getElementById("button");
+const button2 = document.getElementById("button2");
+
+console.log("hey");
 
 const keyboard = new Keyboard({
   onChange: (input) => onChange(input),
@@ -21,15 +25,19 @@ keyboardBackground.addEventListener("click", (d) => {
 
 document.getElementById("search-teacher").addEventListener("submit", (d) => {
   d.preventDefault();
+  keyboardBackground.style.display = "none";
+  keyboardSimple.style.display = "none";
+});
+
+document.getElementById("search-input").addEventListener("input", (d) => {
+  const currentSearch = document.getElementById("search-input").value;
   Array.from(teachers).forEach((element) => {
-    element.classList.remove("found");
     if (
-      element.textContent.trim().toLowerCase() ==
-      d.target[1].value.toLowerCase()
+      element.innerText.toLowerCase().startsWith(currentSearch.toLowerCase())
     ) {
-      element.className += " found";
-      element.scrollIntoView({ behavior: "smooth" });
-      console.log("found");
+      element.classList.remove("is-hidden");
+    } else {
+      element.classList.add("is-hidden");
     }
   });
 });
@@ -38,11 +46,29 @@ document.querySelector(".input").addEventListener("input", (event) => {
   keyboard.setInput(event.target.value);
 });
 
-console.log(keyboard);
+button1.addEventListener("click", (element) => {
+  document.querySelector("html").scrollBy({
+    top: 380,
+    behavior: "smooth",
+  });
+});
+
+button2.addEventListener("click", (element) => {
+  document.querySelector("html").scrollBy({
+    top: -380,
+    behavior: "smooth",
+  });
+});
 
 function onChange(input) {
   document.querySelector(".input").value = input;
-  console.log("Input changed", input);
+  Array.from(teachers).forEach((element) => {
+    if (element.innerText.toLowerCase().startsWith(input.toLowerCase())) {
+      element.classList.remove("is-hidden");
+    } else {
+      element.classList.add("is-hidden");
+    }
+  });
 }
 
 function onKeyPress(button) {
