@@ -3,6 +3,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+#date {
+ 
+  display: block;
+  position: sticky;
+
+}
+
 /* HOME BUTTON */
 
 header a {

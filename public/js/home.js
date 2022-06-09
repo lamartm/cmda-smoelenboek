@@ -3,6 +3,48 @@ const teachers = document.getElementsByClassName("teacher-link");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 
+// AUTOMATISCHE DATUM
+const getCurrentTimeDate = () => {
+  let currentTimeDate = new Date();
+
+  var weekday = new Array(7);
+  weekday[0] = "Zondag";
+  weekday[1] = "Maandag";
+  weekday[2] = "Dinsdag";
+  weekday[3] = "Woensdag";
+  weekday[4] = "Donderdag";
+  weekday[5] = "Vrijdag";
+  weekday[6] = "Zaterdag";
+  
+  var month = new Array();
+  month[0] = "januari";
+  month[1] = "februari";
+  month[2] = "maart";
+  month[3] = "april";
+  month[4] = "mei";
+  month[5] = "juni";
+  month[6] = "juli";
+  month[7] = "augustus";
+  month[8] = "september";
+  month[9] = "oktober";
+  month[10] = "november";
+  month[11] = "december"; 
+  
+  var currentDay = weekday[currentTimeDate.getDay()];
+  var currentDate  = currentTimeDate.getDate();
+  var currentMonth = month[currentTimeDate.getMonth()];
+
+  var fullDate = `${currentDate} ${currentMonth}`;
+
+  document.getElementById("date").innerHTML = currentDay + " " +  fullDate;
+ 
+  setTimeout(getCurrentTimeDate, 3600000);
+
+}
+
+getCurrentTimeDate();
+
+
 // NAVIGATIE ZOEKEN
 
 const keyboard = new Keyboard({
