@@ -168,23 +168,11 @@ body {
 /* Navigatie: scrollen */
 
 nav {
-  /* position: sticky;
+  position: sticky;
   bottom: 6%;
-  left: 85%; */
+  left: 90%;
   display: inline-block;
   font-size: 16px;
-}
-
-#button {
-  position: fixed;
-  bottom: 1%;
-  right: 1%;
-}
-
-#button2 {
-  position: fixed;
-  bottom: 7%;
-  right: 1%;
 }
 
 .is-hidden {

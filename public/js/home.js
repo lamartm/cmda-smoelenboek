@@ -76,12 +76,19 @@ function onKeyPress(button) {
 }
 
 // Scrollen
+const element = document.querySelector(".goPrecious");
+console.log(element);
+element.addEventListener("click", goPrecious);
+
 function goPrecious() {
   document.querySelector("html").scrollBy({
     top: -320,
     behavior: "smooth",
   });
 }
+
+const el = document.querySelector(".goNext");
+el.addEventListener("click", goNext);
 
 function goNext() {
   document.querySelector("html").scrollBy({
