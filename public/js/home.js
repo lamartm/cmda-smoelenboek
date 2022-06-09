@@ -46,20 +46,6 @@ document.querySelector(".input").addEventListener("input", (event) => {
   keyboard.setInput(event.target.value);
 });
 
-button1.addEventListener("click", (element) => {
-  document.querySelector("html").scrollBy({
-    top: 380,
-    behavior: "smooth",
-  });
-});
-
-button2.addEventListener("click", (element) => {
-  document.querySelector("html").scrollBy({
-    top: -380,
-    behavior: "smooth",
-  });
-});
-
 function onChange(input) {
   document.querySelector(".input").value = input;
   Array.from(teachers).forEach((element) => {
