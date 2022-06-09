@@ -2,8 +2,18 @@
 In de meesterproef, een module van de minor Web Design & Development, maken we in samenwerking met CMD Amsterdam een online smoelenboek. 
 
 ### Voorkant
+tech
+vorm
+interactie
+projecten
+cultuur 
+staff medewerkers
+
+agenda weergeven op detailpage gekoppeld aan roooster. extra feature
+bij datum ook andere informatie zoals activiteiten etc.
 
 
+ 
 ### Beschrijving
 
 

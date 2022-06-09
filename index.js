@@ -41,7 +41,7 @@ app.get("/detail/:id", async (req, res) => {
   const document = await client.getByUID("teacher-card", req.params.id);
   res.render("detail", { document });
 });
-
+ 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
