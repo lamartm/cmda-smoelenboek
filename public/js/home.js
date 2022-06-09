@@ -1,12 +1,9 @@
 const Keyboard = window.SimpleKeyboard.default;
-
 const teachers = document.getElementsByClassName("teacher-link");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
-const button1 = document.getElementById("button");
-const button2 = document.getElementById("button2");
 
-console.log("hey");
+// NAVIGATIE ZOEKEN
 
 const keyboard = new Keyboard({
   onChange: (input) => onChange(input),
@@ -61,9 +58,9 @@ function onKeyPress(button) {
   console.log("Button pressed", button);
 }
 
-// Scrollen
+// NAVIGATIE SCROLLEN
+
 const element = document.querySelector(".goPrecious");
-console.log(element);
 element.addEventListener("click", goPrecious);
 
 function goPrecious() {

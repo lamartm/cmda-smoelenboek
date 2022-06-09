@@ -7,6 +7,8 @@ import { client } from "./config/prismicConfig.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
+// WEERGAVE BESCHIKBAARHEID 
+
 const options = {
   weekday: "long",
 };
@@ -17,15 +19,16 @@ app.set("view engine", "ejs");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.join(__dirname, "views")));
 
-// Add a middleware function that runs on every route. It will inject
-// the prismic context to the locals so that we can access these in
-// our templates.
+// MIDDLEWARE FUNCTION VOOR ELKE ROUTE VOOR PRISMIC SJABLONEN
+
 app.use((req, res, next) => {
   res.locals.ctx = {
     prismicH,
   };
   next();
 });
+
+// ROUTES
 
 app.use(express.static("public"));
 

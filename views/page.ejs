@@ -1,42 +1,43 @@
 <%- include ("./partials/head.ejs") %>
 
+<div class="container">
+    <section class="teachers">
+        <% document.forEach(teacher => { %>
+            <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+            <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
+                <a href="<%= encodedURL %>" class="teacher-link">
+                    <article class="teacher bck-grey">
+                        <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
+                        <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                    </article>
+                </a>
+            <% } else{ %> 
+                <a href="<%= encodedURL %>" class="teacher-link">
+                    <article class="teacher">
+                        <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
+                        <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                    </article>
+                </a>
+            <% } %> 
+        <% }) %>
+        <% for (let i = 0; i < 130; i++) { %>
+            <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+            <a href="<%= encodedURL %>" class="teacher-link">
+                <article class="teacher">
+                    <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
+                    <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
+                </article>
+            </a>
+        <% } %>
+    </section>
+</div>
+
 <form id="search-teacher">
     <button class="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
-    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
+    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leraar">
     <div id="keyboard-bg"></div>
     <div id="keyboard" class="simple-keyboard"></div>
 </form>
-<div class="container">
-    <section class="teachers">
-    <% document.forEach(teacher => { %>
-        <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-        <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
-            <a href="<%= encodedURL %>" class="teacher-link">
-                <article class="teacher bck-grey">
-                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                    <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                </article>
-            </a>
-        <% } else{ %> 
-            <a href="<%= encodedURL %>" class="teacher-link">
-                <article class="teacher">
-                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                    <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                </article>
-            </a>
-        <% } %> 
-    <% }) %>
-    <% for (let i = 0; i < 130; i++) { %>
-        <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-        <a href="<%= encodedURL %>" class="teacher-link">
-            <article class="teacher">
-                <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
-                <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
-            </article>
-        </a>
-    <% } %>
-    </section>
-</div>
 
 <nav>
     <button class="goPrecious"><img class="icon" src="/images/up.svg"></button>
@@ -45,4 +46,5 @@
 
 <script type="module" src="/js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+
 <%- include ("./partials/footer.ejs") %>

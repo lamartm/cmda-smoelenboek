@@ -3,27 +3,24 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-#keyboard-bg {
+.is-hidden {
   display: none;
-  background: #0000005e;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0%;
-  left: 0%;
 }
 
-.pic-size {
-  width: 6em;
+/* ICONS */
+
+.icon {
+  width: 1.4em;
 }
 
-.simple-keyboard {
-  display: none;
-  position: fixed;
-  bottom: 0%;
-  transform: translate(-50%, 0%);
-  width: 40vw;
-  left: 55%;
+/* CONTENT TEACHERS */
+
+.container {
+  display: flex;
+  height: 100%;
+  margin-top: 5em;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .teachers {
@@ -39,32 +36,6 @@ body {
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   scroll-snap-type: y mandatory;
-}
-
-.search-teacher-btn {
-  z-index: 1;
-  padding: 0.6em;
-  cursor: pointer;
-  background: white;
-  border-radius: 100%;
-  margin-right: 0.5em;
-  transition: background-color 0.3s ease;
-}
-
-.search-teacher-btn:hover {
-  background-color: #e2e2e2;
-  transition: background-color 0.3s ease;
-}
-.input {
-  z-index: 1;
-  padding-left: 1em;
-  cursor: pointer;
-  border-radius: 13px;
-  border: 3px black solid;
-}
-
-.icon {
-  width: 1.4em;
 }
 
 .teachers::before {
@@ -102,39 +73,22 @@ body {
   text-align: center;
 }
 
-.container {
-  display: flex;
-  height: 100%;
-  margin-top: 5em;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#search-teacher {
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  bottom: 6%;
-  left: 2%;
-  z-index: 1;
-}
-
-.unavailable {
-  filter: grayscale(1);
-}
-
-.bck-grey {
-  background-color: #d5d5d5;
-}
-
 .teacher-link {
   text-decoration: none;
   color: black;
   scroll-snap-align: center;
 }
 
-.found {
-  border: 3px rgb(119 255 119) solid;
+.bck-grey {
+  background-color: #d5d5d5;
+}
+
+.pic-size {
+  width: 6em;
+}
+
+.unavailable {
+  filter: grayscale(1);
 }
 
 .teacher-info-container {
@@ -165,7 +119,64 @@ body {
   margin-right: 2em;
 }
 
-/* Navigatie: scrollen */
+/* NAVIGATIE ZOEKEN */
+
+#search-teacher {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  bottom: 6%;
+  left: 2%;
+  z-index: 1;
+}
+
+.search-teacher-btn {
+  z-index: 1;
+  padding: 0.6em;
+  cursor: pointer;
+  background: white;
+  border-radius: 100%;
+  margin-right: 0.5em;
+  transition: background-color 0.3s ease;
+}
+
+.search-teacher-btn:hover {
+  background-color: #e2e2e2;
+  transition: background-color 0.3s ease;
+}
+
+.input {
+  z-index: 1;
+  padding-left: 1em;
+  cursor: pointer;
+  border-radius: 13px;
+  border: 3px black solid;
+}
+
+#keyboard-bg {
+  display: none;
+  background: #0000005e;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+}
+
+.simple-keyboard {
+  display: none;
+  position: fixed;
+  bottom: 0%;
+  transform: translate(-50%, 0%);
+  width: 40vw;
+  left: 55%;
+}
+
+.is-hidden {
+  display: none;
+}
+
+/* NAVIGATIE SCROLLEN */
 
 nav {
   position: sticky;
@@ -173,10 +184,6 @@ nav {
   left: 90%;
   display: inline-block;
   font-size: 16px;
-}
-
-.is-hidden {
-  display: none;
 }
 
 nav button {
@@ -194,6 +201,8 @@ nav button:hover {
   background-color: #e2e2e2;
   transition: background-color 0.3s ease;
 }
+
+/* ANIMATIE PUPPY */
 
 .extraImg {
   opacity: 0;
