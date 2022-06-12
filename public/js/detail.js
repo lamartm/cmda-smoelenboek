@@ -2,6 +2,8 @@ const teacherName = document.getElementById("teacher-info-name");
 const imgAnimation = document.getElementById("extra-img-animation");
 const imgAnimation2 = document.getElementById("extra-img-animation2");
 
+// ANIMATIE PUPPY
+
 let count = 0;
 
 const extraImgMoving = [

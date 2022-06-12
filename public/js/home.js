@@ -1,16 +1,57 @@
 const Keyboard = window.SimpleKeyboard.default;
-
 const teachers = document.getElementsByClassName("teacher-link");
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
-const button1 = document.getElementById("button");
-const button2 = document.getElementById("button2");
+const upButton = document.getElementById("upButton");
+const downButton = document.getElementById("downButton");
 const filter = document.getElementById("filter");
 const specialtySelection = document.getElementById("specialty-filter");
 const checkBoxes = document.querySelectorAll("input[name=specialty]");
 
 let filterPressed = false;
+
+// AUTOMATISCHE DATUM
+const getCurrentTimeDate = () => {
+  let currentTimeDate = new Date();
+
+  var weekday = new Array(7);
+  weekday[0] = "Zondag";
+  weekday[1] = "Maandag";
+  weekday[2] = "Dinsdag";
+  weekday[3] = "Woensdag";
+  weekday[4] = "Donderdag";
+  weekday[5] = "Vrijdag";
+  weekday[6] = "Zaterdag";
+
+  var month = new Array();
+  month[0] = "januari";
+  month[1] = "februari";
+  month[2] = "maart";
+  month[3] = "april";
+  month[4] = "mei";
+  month[5] = "juni";
+  month[6] = "juli";
+  month[7] = "augustus";
+  month[8] = "september";
+  month[9] = "oktober";
+  month[10] = "november";
+  month[11] = "december";
+
+  var currentDay = weekday[currentTimeDate.getDay()];
+  var currentDate = currentTimeDate.getDate();
+  var currentMonth = month[currentTimeDate.getMonth()];
+
+  var fullDate = `${currentDate} ${currentMonth}`;
+
+  document.getElementById("date").innerHTML = currentDay + " " + fullDate;
+
+  setTimeout(getCurrentTimeDate, 3600000);
+};
+
+getCurrentTimeDate();
+
+// NAVIGATIE ZOEKEN
 
 const keyboard = new Keyboard({
   onChange: (input) => onChange(input),
@@ -50,14 +91,14 @@ document.querySelector(".input").addEventListener("input", (event) => {
   keyboard.setInput(event.target.value);
 });
 
-button1.addEventListener("click", (element) => {
+downButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
     top: 380,
     behavior: "smooth",
   });
 });
 
-button2.addEventListener("click", (element) => {
+upButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
     top: -380,
     behavior: "smooth",
@@ -117,13 +158,20 @@ function onKeyPress(button) {
   console.log("Button pressed", button);
 }
 
-// Scrollen
+// NAVIGATIE SCROLLEN
+
+const element = document.querySelector(".goPrecious");
+element.addEventListener("click", goPrecious);
+
 function goPrecious() {
   document.querySelector("html").scrollBy({
     top: -320,
     behavior: "smooth",
   });
 }
+
+const el = document.querySelector(".goNext");
+el.addEventListener("click", goNext);
 
 function goNext() {
   document.querySelector("html").scrollBy({

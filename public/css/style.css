@@ -3,27 +3,48 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-#keyboard-bg {
-  display: none;
-  background: #0000005e;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0%;
-  left: 0%;
+#date {
+ 
+  display: block;
+  position: sticky;
+
 }
 
-.pic-size {
-  width: 6em;
+/* HOME BUTTON */
+
+header a {
+  display: block;
+  height: 40px;
+  width: 70px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 13px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  border: 3px black solid;
+  cursor: pointer;
+  padding: 15px 25px;
+  outline: none;
+  box-shadow: 0 9px rgb(15, 15, 15);
+  position: absolute;
+  bottom: 3%;
+  left: 90%;
 }
 
-.simple-keyboard {
-  display: none;
-  position: fixed;
-  bottom: 0%;
-  transform: translate(-50%, 0%);
-  width: 40vw;
-  left: 55%;
+header a:active {
+  background-color: #ffffff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* CONTENT TEACHERS */
+
+.container {
+  display: flex;
+  height: 100%;
+  margin-top: 5em;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .teachers {
@@ -108,39 +129,22 @@ body {
   text-align: center;
 }
 
-.container {
-  display: flex;
-  height: 100%;
-  margin-top: 5em;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#search-teacher {
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  bottom: 6%;
-  left: 2%;
-  z-index: 1;
-}
-
-.unavailable {
-  filter: grayscale(1);
-}
-
-.bck-grey {
-  background-color: #d5d5d5;
-}
-
 .teacher-link {
   text-decoration: none;
   color: black;
   scroll-snap-align: center;
 }
 
-.found {
-  border: 3px rgb(119 255 119) solid;
+.bck-grey {
+  background-color: #d5d5d5;
+}
+
+.pic-size {
+  width: 6em;
+}
+
+.unavailable {
+  filter: grayscale(1);
 }
 
 .teacher-info-container {
@@ -171,14 +175,22 @@ body {
   margin-right: 2em;
 }
 
-/* Navigatie: scrollen */
 
-nav {
-  /* position: sticky;
+/* ICONS */
+
+.icon {
+  width: 1.4em;
+}
+
+/* NAVIGATIE ZOEKEN */
+
+#search-teacher {
+  display: flex;
+  position: fixed;
+  justify-content: center;
   bottom: 6%;
-  left: 85%; */
-  display: inline-block;
-  font-size: 16px;
+  left: 2%;
+  z-index: 1;
 }
 
 #filter {
@@ -187,16 +199,58 @@ nav {
   right: 5%;
 }
 
-#button {
+#upButton {
+  position: fixed;
+  bottom: 7%;
+  right: 1%;
+}
+
+#downButton {
   position: fixed;
   bottom: 1%;
   right: 1%;
 }
 
-#button2 {
+.search-teacher-btn {
+  z-index: 1;
+  padding: 0.6em;
+  cursor: pointer;
+  background: white;
+  border-radius: 100%;
+  margin-right: 0.5em;
+  transition: background-color 0.3s ease;
+}
+
+.search-teacher-btn:hover {
+  background-color: #e2e2e2;
+  transition: background-color 0.3s ease;
+}
+
+.input {
+  z-index: 1;
+  padding-left: 1em;
+  cursor: pointer;
+  border-radius: 13px;
+  border: 3px black solid;
+}
+
+#keyboard-bg {
+  display: none;
+  background: #0000005e;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  bottom: 7%;
-  right: 1%;
+  top: 0%;
+  left: 0%;
+}
+
+.simple-keyboard {
+  display: none;
+  position: fixed;
+  bottom: 0%;
+  transform: translate(-50%, 0%);
+  width: 40vw;
+  left: 55%;
 }
 
 #specialty-filter {
@@ -212,6 +266,16 @@ nav {
   display: none;
 }
 
+/* NAVIGATIE SCROLLEN */
+
+nav {
+  position: sticky;
+  bottom: 6%;
+  left: 90%;
+  display: inline-block;
+  font-size: 16px;
+}
+
 button {
   background-color: #ffffff;
   border: 3px black solid;
@@ -223,10 +287,12 @@ button {
   transition: background-color 0.3s ease;
 }
 
-nav button:hover {
+button:hover {
   background-color: #e2e2e2;
   transition: background-color 0.3s ease;
 }
+
+/* ANIMATIE PUPPY */
 
 .extraImg {
   opacity: 0;
