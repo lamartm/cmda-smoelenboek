@@ -1,5 +1,4 @@
 const Keyboard = window.SimpleKeyboard.default;
-const teachers = document.getElementsByClassName("teacher-link");
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
@@ -145,7 +144,7 @@ checkBoxes.forEach((d) => {
 
 function onChange(input) {
   document.querySelector(".input").value = input;
-  Array.from(teachers).forEach((element) => {
+  Array.from(specialtyTeacher).forEach((element) => {
     if (element.innerText.toLowerCase().startsWith(input.toLowerCase())) {
       element.classList.remove("is-hidden");
     } else {

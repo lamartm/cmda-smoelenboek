@@ -211,6 +211,10 @@ header a:active {
   right: 1%;
 }
 
+.beschrijving-leeraar {
+  max-width: 350px;
+}
+
 .search-teacher-btn {
   z-index: 1;
   padding: 0.6em;
