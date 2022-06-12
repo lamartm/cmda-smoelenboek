@@ -1,12 +1,16 @@
 const Keyboard = window.SimpleKeyboard.default;
 
 const teachers = document.getElementsByClassName("teacher-link");
+const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 const button1 = document.getElementById("button");
 const button2 = document.getElementById("button2");
+const filter = document.getElementById("filter");
+const specialtySelection = document.getElementById("specialty-filter");
+const checkBoxes = document.querySelectorAll("input[name=specialty]");
 
-console.log("hey");
+let filterPressed = false;
 
 const keyboard = new Keyboard({
   onChange: (input) => onChange(input),
@@ -58,6 +62,44 @@ button2.addEventListener("click", (element) => {
     top: -380,
     behavior: "smooth",
   });
+});
+
+filter.addEventListener("click", (element) => {
+  if (filterPressed === false) {
+    filterPressed = true;
+    specialtySelection.style.display = "initial";
+  } else {
+    filterPressed = false;
+    specialtySelection.style.display = "none";
+  }
+});
+
+const filterOnSpecialty = (e) => {
+  const checkedBoxes = document.querySelectorAll(
+    "input[name=specialty]:checked"
+  );
+
+  let specialties = [];
+
+  checkedBoxes.forEach((d) => {
+    specialties.push(d.value.toLowerCase());
+  });
+
+  specialties.length === 0
+    ? specialtyTeacher.forEach((specialty) => {
+        specialty.classList.remove("is-hidden");
+      })
+    : specialtyTeacher.forEach((specialty) => {
+        specialties.some((d) =>
+          specialty.getAttribute("data-value").includes(d)
+        )
+          ? specialty.classList.remove("is-hidden")
+          : specialty.classList.add("is-hidden");
+      });
+};
+
+checkBoxes.forEach((d) => {
+  d.addEventListener("click", filterOnSpecialty);
 });
 
 function onChange(input) {

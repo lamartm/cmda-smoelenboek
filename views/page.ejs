@@ -1,5 +1,4 @@
 <%- include ("./partials/head.ejs") %>
-
 <form id="search-teacher">
     <button class="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
     <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
@@ -8,35 +7,63 @@
 </form>
 <div class="container">
     <section class="teachers">
-    <% document.forEach(teacher => { %>
-        <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-        <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
-            <a href="<%= encodedURL %>" class="teacher-link">
-                <article class="teacher bck-grey">
-                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                    <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                </article>
-            </a>
-        <% } else{ %> 
-            <a href="<%= encodedURL %>" class="teacher-link">
-                <article class="teacher">
-                    <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                    <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                </article>
-            </a>
-        <% } %> 
-    <% }) %>
-    <% for (let i = 0; i < 130; i++) { %>
-        <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-        <a href="<%= encodedURL %>" class="teacher-link">
-            <article class="teacher">
-                <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
-                <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
-            </article>
-        </a>
-    <% } %>
+        <ul class="teachers-container">
+        <% document.forEach(teacher => { %>
+            <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+            <% const specialty = Object.keys(teacher.data.specialiteiten[0]).filter(k => teacher.data.specialiteiten[0][k]) %> 
+            
+            <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
+                <li class="specialty-teacher" data-value="<%- specialty %>">
+                    <a href="<%= encodedURL %>" class="teacher-link">
+                        <article class="teacher bck-grey">
+                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
+                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        </article>
+                    </a>
+                </li>
+            <% } else{ %> 
+                <li class="specialty-teacher" data-value="<%- specialty %>">
+                    <a href="<%= encodedURL %>" class="teacher-link">
+                        <article class="teacher">
+                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
+                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        </article>
+                    </a>
+                </li>
+            <% } %> 
+        <% }) %>
+        <% for (let i = 0; i < 130; i++) { %>
+            <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+            <% const specialty = Object.keys(document[0].data.specialiteiten[0]).filter(k => document[0].data.specialiteiten[0][k]) %> 
+            <li class="specialty-teacher" data-value="<%- specialty %>">
+                <a href="<%= encodedURL %>" class="teacher-link">
+                    <article class="teacher">
+                        <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
+                        <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
+                    </article>
+                </a>
+            </li>
+        <% } %>
+    </ul>
     </section>
 </div>
+
+<fieldset id="specialty-filter">
+    <div>
+      <input type="checkbox" id="UX" name="specialty" value="UX">
+      <label for="UX">UX</label>
+    </div>
+    <div>
+      <input type="checkbox" id="Tech" name="specialty" value="Tech">
+      <label for="Tech">Tech</label>
+    </div>
+    <div>
+      <input type="checkbox" id="UI" name="specialty" value="UI">
+      <label for="UI">UI</label>
+    </div>
+</fieldset>
+
+<button id="filter"><img class="icon" src="/images/filter.svg"></button>
 
 <nav>
     <button id="button2"><img class="icon" src="/images/up.svg"></button>
