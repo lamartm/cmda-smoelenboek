@@ -18,7 +18,7 @@
                     <a href="<%= encodedURL %>" class="teacher-link">
                         <article class="teacher bck-grey">
                             <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                            <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
                         </article>
                     </a>
                 </li>
@@ -27,7 +27,7 @@
                     <a href="<%= encodedURL %>" class="teacher-link">
                         <article class="teacher">
                             <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                            <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
                         </article>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                 <a href="<%= encodedURL %>" class="teacher-link">
                     <article class="teacher">
                         <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
-                        <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
+                        <h1 class="teacher-name"><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
                     </article>
                 </a>
             </li>
@@ -72,6 +72,7 @@
 </nav>
 
 <script type="module" src="/js/home.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
 
 <%- include ("./partials/footer.ejs") %>

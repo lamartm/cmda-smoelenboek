@@ -1,5 +1,6 @@
 const Keyboard = window.SimpleKeyboard.default;
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
+const searchInput = document.getElementById("search-input");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 const upButton = document.getElementById("upButton");
@@ -10,45 +11,7 @@ const checkBoxes = document.querySelectorAll("input[name=specialty]");
 
 let filterPressed = false;
 
-// AUTOMATISCHE DATUM
-const getCurrentTimeDate = () => {
-  let currentTimeDate = new Date();
-
-  var weekday = new Array(7);
-  weekday[0] = "Zondag";
-  weekday[1] = "Maandag";
-  weekday[2] = "Dinsdag";
-  weekday[3] = "Woensdag";
-  weekday[4] = "Donderdag";
-  weekday[5] = "Vrijdag";
-  weekday[6] = "Zaterdag";
-
-  var month = new Array();
-  month[0] = "januari";
-  month[1] = "februari";
-  month[2] = "maart";
-  month[3] = "april";
-  month[4] = "mei";
-  month[5] = "juni";
-  month[6] = "juli";
-  month[7] = "augustus";
-  month[8] = "september";
-  month[9] = "oktober";
-  month[10] = "november";
-  month[11] = "december";
-
-  var currentDay = weekday[currentTimeDate.getDay()];
-  var currentDate = currentTimeDate.getDate();
-  var currentMonth = month[currentTimeDate.getMonth()];
-
-  var fullDate = `${currentDate} ${currentMonth}`;
-
-  document.getElementById("date").innerHTML = currentDay + " " + fullDate;
-
-  setTimeout(getCurrentTimeDate, 3600000);
-};
-
-getCurrentTimeDate();
+const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
 // NAVIGATIE ZOEKEN
 
@@ -57,7 +20,7 @@ const keyboard = new Keyboard({
   onKeyPress: (button) => onKeyPress(button),
 });
 
-document.getElementById("search-input").addEventListener("click", (d) => {
+searchInput.addEventListener("click", (d) => {
   keyboardBackground.style.display = "initial";
   keyboardSimple.style.display = "initial";
 });
@@ -73,9 +36,10 @@ document.getElementById("search-teacher").addEventListener("submit", (d) => {
   keyboardSimple.style.display = "none";
 });
 
-document.getElementById("search-input").addEventListener("input", (d) => {
+searchInput.addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
-  Array.from(teachers).forEach((element) => {
+  performMark();
+  Array.from(specialtyTeacher).forEach((element) => {
     if (
       element.innerText.toLowerCase().startsWith(currentSearch.toLowerCase())
     ) {
@@ -89,6 +53,8 @@ document.getElementById("search-input").addEventListener("input", (d) => {
 document.querySelector(".input").addEventListener("input", (event) => {
   keyboard.setInput(event.target.value);
 });
+
+// NAVIGATIE SCROLLEN
 
 downButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
@@ -113,6 +79,58 @@ filter.addEventListener("click", (element) => {
     specialtySelection.style.display = "none";
   }
 });
+
+function performMark() {
+  let keyword = searchInput.value;
+
+  console.log(keyword);
+
+  markInstance.unmark({
+    done: function () {
+      markInstance.mark(keyword);
+    },
+  });
+}
+
+// AUTOMATISCHE DATUM
+const getCurrentTimeDate = () => {
+  let currentTimeDate = new Date();
+
+  const weekday = new Array(7);
+  weekday[0] = "Zondag";
+  weekday[1] = "Maandag";
+  weekday[2] = "Dinsdag";
+  weekday[3] = "Woensdag";
+  weekday[4] = "Donderdag";
+  weekday[5] = "Vrijdag";
+  weekday[6] = "Zaterdag";
+
+  const month = new Array();
+  month[0] = "januari";
+  month[1] = "februari";
+  month[2] = "maart";
+  month[3] = "april";
+  month[4] = "mei";
+  month[5] = "juni";
+  month[6] = "juli";
+  month[7] = "augustus";
+  month[8] = "september";
+  month[9] = "oktober";
+  month[10] = "november";
+  month[11] = "december";
+
+  const currentDay = weekday[currentTimeDate.getDay()];
+  const currentDate = currentTimeDate.getDate();
+  const currentMonth = month[currentTimeDate.getMonth()];
+
+  const fullDate = `${currentDate} ${currentMonth}`;
+
+  document.getElementById("date").innerHTML = currentDay + " " + fullDate;
+
+  setTimeout(getCurrentTimeDate, 3600000);
+};
+
+getCurrentTimeDate();
 
 const filterOnSpecialty = (e) => {
   const checkedBoxes = document.querySelectorAll(
@@ -144,8 +162,9 @@ checkBoxes.forEach((d) => {
 
 function onChange(input) {
   document.querySelector(".input").value = input;
+  performMark();
   Array.from(specialtyTeacher).forEach((element) => {
-    if (element.innerText.toLowerCase().startsWith(input.toLowerCase())) {
+    if (element.innerText.toLowerCase().includes(input.toLowerCase())) {
       element.classList.remove("is-hidden");
     } else {
       element.classList.add("is-hidden");
@@ -159,22 +178,22 @@ function onKeyPress(button) {
 
 // NAVIGATIE SCROLLEN
 
-const element = document.querySelector(".goPrecious");
-element.addEventListener("click", goPrecious);
+// const element = document.querySelector(".goPrecious");
+// element.addEventListener("click", goPrecious);
 
-function goPrecious() {
-  document.querySelector("html").scrollBy({
-    top: -320,
-    behavior: "smooth",
-  });
-}
+// function goPrecious() {
+//   document.querySelector("html").scrollBy({
+//     top: -320,
+//     behavior: "smooth",
+//   });
+// }
 
-const el = document.querySelector(".goNext");
-el.addEventListener("click", goNext);
+// const el = document.querySelector(".goNext");
+// el.addEventListener("click", goNext);
 
-function goNext() {
-  document.querySelector("html").scrollBy({
-    top: 320,
-    behavior: "smooth",
-  });
-}
+// function goNext() {
+//   document.querySelector("html").scrollBy({
+//     top: 320,
+//     behavior: "smooth",
+//   });
+// }

@@ -1,6 +1,18 @@
 <%- include ("./partials/head.ejs") %>
 
-<% const {teacherpic, teachername, vakken, beschrijving, hobbies} = document.data %>
+<% const {teacherpic, teachername, vakken, beschrijving, hobbies, beschikbaarheid, email} = document.data %>
+
+<% const dagen = Object.keys(beschikbaarheid[0]).reduce((currentResult, key) => {
+    console.log(currentResult)
+    console.log(key)
+    beschikbaarheid[0][key] === true && (currentResult[key] = beschikbaarheid[0][key]);
+
+    return currentResult;
+  }, {}); %> 
+
+<% const dagenArray = Object.keys(dagen) %> 
+<% const dagenCapital = dagenArray.map(d => d.charAt(0).toUpperCase() + d.substr(1)) %>
+<% const dagenString = dagenCapital.join(', '); %>
 
 <header>
    <a href ="/">Terug</a>
@@ -13,6 +25,10 @@
         </div>
         <div>
             <h1 id="teacher-info-name"><%- teachername[0].text %></h1>
+            <h2>Beschikbaarheid</h2>
+            <p><%- dagenString === "" ? "None" : dagenString %></p>
+            <h2>Email</h2>
+            <p><%- email.length === 0 ? "None" : email[0].text %></p>
             <h2>Vakken</h2>
             <p><%- vakken.length === 0 ? "None" : vakken[0].text %></p>
             <h2>Beschrijving</h2>
