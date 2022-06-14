@@ -4,10 +4,8 @@ body {
 }
 
 #date {
- 
   display: block;
   position: sticky;
-
 }
 
 /* HOME BUTTON */
@@ -39,6 +37,38 @@ header a:active {
   background-color: #ffffff;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+/* Alphabet filter */
+
+#alphabet-filter {
+  display: inline-grid;
+  grid-gap: 0.4em;
+  grid-template-columns: repeat(9, 1fr);
+  border: none;
+  position: fixed;
+  bottom: 3%;
+  left: 56%;
+  transform: translateX(-50%);
+}
+
+.letterInput {
+  display: none;
+}
+
+.letterLabel {
+  cursor: pointer;
+  padding: 1px 8px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: 3px black solid;
+  color: black;
+  background-color: #ffffff;
+}
+
+.letterInput:checked + .letterLabel {
+  background-color: rgb(248, 189, 25);
+  color: white;
 }
 
 /* CONTENT TEACHERS */
@@ -180,7 +210,6 @@ header a:active {
   margin-right: 2em;
 }
 
-
 /* ICONS */
 
 .icon {
@@ -265,7 +294,7 @@ header a:active {
 #specialty-filter {
   display: none;
   background-color: white;
-  border:3px black solid;
+  border: 3px black solid;
   position: fixed;
   bottom: 11%;
   right: 5.2%;

@@ -1,3 +1,5 @@
+import "./alphabetFilter.js";
+
 const Keyboard = window.SimpleKeyboard.default;
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const searchInput = document.getElementById("search-input");
@@ -175,25 +177,3 @@ function onChange(input) {
 function onKeyPress(button) {
   console.log("Button pressed", button);
 }
-
-// NAVIGATIE SCROLLEN
-
-// const element = document.querySelector(".goPrecious");
-// element.addEventListener("click", goPrecious);
-
-// function goPrecious() {
-//   document.querySelector("html").scrollBy({
-//     top: -320,
-//     behavior: "smooth",
-//   });
-// }
-
-// const el = document.querySelector(".goNext");
-// el.addEventListener("click", goNext);
-
-// function goNext() {
-//   document.querySelector("html").scrollBy({
-//     top: 320,
-//     behavior: "smooth",
-//   });
-// }
