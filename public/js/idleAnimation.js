@@ -29,7 +29,7 @@ function stopAnimation() {
           setTimeout(() => {
             count += 200;
             element.style.animation = `1.8s linear ${count}ms infinite alternate alternateWave`;
-          }, 15000)
+          }, 30000)
         );
       });
     }
