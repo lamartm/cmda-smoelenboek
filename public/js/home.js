@@ -1,8 +1,13 @@
 import "./alphabetFilter.js";
+import "./idleAnimation.js";
 
 const Keyboard = window.SimpleKeyboard.default;
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-teacher-btn");
+const alphabetField = document.getElementById("alphabet-filter");
+const allAlphabetInput = document.getElementById("All");
+
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 const upButton = document.getElementById("upButton");
@@ -36,6 +41,34 @@ document.getElementById("search-teacher").addEventListener("submit", (d) => {
   d.preventDefault();
   keyboardBackground.style.display = "none";
   keyboardSimple.style.display = "none";
+});
+
+searchButton.addEventListener("click", () => {
+  let computedStyles = window.getComputedStyle(searchInput);
+  searchInput.style.animation =
+    computedStyles.getPropertyValue("animation") ===
+      "0s ease 0s 1 normal none running none" ||
+    computedStyles.getPropertyValue("animation") ===
+      "1s ease-in-out 0s 1 normal none running removeSearchFromScreen"
+      ? "1s ease-in-out 0s 1 normal forwards running showSearchToScreen"
+      : "1s ease-in-out 0s 1 normal none running removeSearchFromScreen";
+
+  if (
+    searchInput.style.animation ===
+      "1s ease-in-out 0s 1 normal forwards running showSearchToScreen" &&
+    (alphabetField.style.animation ===
+      "1s ease-in-out 0s 1 normal forwards running showAlphabetToScreen" ||
+      alphabetField.style.animation === "0s ease 0s 1 normal none running none")
+  ) {
+    alphabetField.style.animation =
+      "1s ease-in-out 0s 1 normal none running removeAlphabetFromScreen";
+  }
+
+  allAlphabetInput.checked = true;
+
+  Array.from(specialtyTeacher).forEach((element) => {
+    element.classList.remove("is-hidden");
+  });
 });
 
 searchInput.addEventListener("input", (d) => {

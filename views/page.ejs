@@ -1,20 +1,14 @@
 <%- include ("./partials/head.ejs") %>
-<form id="search-teacher">
-    <button class="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
-    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
-    <div id="keyboard-bg"></div>
-    <div id="keyboard" class="simple-keyboard"></div>
-</form>
 <div class="container">
     <section class="teachers">
         <h1 id="date"></h1>
         <ul class="teachers-container">
-        <% document.forEach(teacher => { %>
+        <% document.forEach((teacher, index) => { %>
             <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
             <% const specialty = Object.keys(teacher.data.specialiteiten[0]).filter(k => teacher.data.specialiteiten[0][k]) %> 
             
             <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
-                <li class="specialty-teacher" data-value="<%- specialty %>">
+                <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
                     <a href="<%= encodedURL %>" class="teacher-link">
                         <article class="teacher bck-grey">
                             <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
@@ -23,7 +17,7 @@
                     </a>
                 </li>
             <% } else{ %> 
-                <li class="specialty-teacher" data-value="<%- specialty %>">
+                <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
                     <a href="<%= encodedURL %>" class="teacher-link">
                         <article class="teacher">
                             <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
@@ -44,10 +38,18 @@
                     </article>
                 </a>
             </li>
-        <% } %>
+        <% } %>       
     </ul>
     </section>
 </div>
+
+<button id="alphabet-filter-btn">A-Z</button>
+<form id="search-teacher">
+    <button id="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
+    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
+    <div id="keyboard-bg"></div>
+    <div id="keyboard" class="simple-keyboard"></div>
+</form>
 
 <fieldset id="specialty-filter">
     <div>
@@ -61,6 +63,18 @@
     <div>
       <input type="checkbox" id="UI" name="specialty" value="UI">
       <label for="UI">UI</label>
+    </div>
+    <div>
+       <input type="checkbox" id="Maatschappij" name="specialty" value="Maatschappij">
+       <label for="Maatschappij">Maatschappij</label>
+    </div>
+    <div>
+       <input type="checkbox" id="Vormgeving" name="specialty" value="Vormgeving">
+       <label for="Vormgeving">Vormgeving</label>
+    </div>
+    <div>
+       <input type="checkbox" id="Staff" name="specialty" value="Staff">
+       <label for="Staff">Staff</label>
     </div>
 </fieldset>
 

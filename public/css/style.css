@@ -47,9 +47,19 @@ header a:active {
   grid-template-columns: repeat(9, 1fr);
   border: none;
   position: fixed;
-  bottom: 3%;
+  bottom: -20%;
   left: 56%;
   transform: translateX(-50%);
+  animation: none;
+}
+
+#alphabet-filter-btn {
+  position: fixed;
+  color: black;
+  font-weight: 800;
+  font-size: 0.8rem;
+  bottom: 6%;
+  left: 1%;
 }
 
 .letterInput {
@@ -95,6 +105,7 @@ header a:active {
 }
 
 .teachers-container {
+  padding: 0;
   width: 100%;
   list-style-type: none;
   display: grid;
@@ -103,7 +114,7 @@ header a:active {
   justify-items: center;
 }
 
-.search-teacher-btn {
+#search-teacher-btn {
   z-index: 1;
   padding: 0.6em;
   cursor: pointer;
@@ -113,7 +124,7 @@ header a:active {
   transition: background-color 0.3s ease;
 }
 
-.search-teacher-btn:hover {
+#search-teacher-btn:hover {
   background-color: #e2e2e2;
   transition: background-color 0.3s ease;
 }
@@ -127,6 +138,11 @@ header a:active {
 
 .icon {
   width: 1.4em;
+}
+
+.specialty-teacher {
+  transition: all 2s ease;
+  animation: alternateWave 1s ease-in infinite;
 }
 
 .teachers::before {
@@ -159,6 +175,7 @@ header a:active {
   padding: 0em 1em 0.5em 1em;
   height: 80%;
   margin-bottom: 2em;
+  border: 3px solid black;
   background-color: white;
   border-radius: 5px;
   text-align: center;
@@ -223,8 +240,13 @@ header a:active {
   position: fixed;
   justify-content: center;
   bottom: 6%;
-  left: 2%;
+  left: 5%;
   z-index: 1;
+}
+
+#search-input {
+  transform: translateY(9em);
+  animation: none;
 }
 
 #filter {
@@ -351,5 +373,65 @@ button:hover {
   }
   100% {
     transform: rotate(-30deg);
+  }
+}
+
+@keyframes showAlphabetToScreen {
+  0% {
+    bottom: -20%
+  }
+  75% {
+    bottom: 6%;
+  }
+  100% {
+    bottom: 3%;
+  }
+}
+
+@keyframes removeAlphabetFromScreen {
+  0% {
+    bottom: 3%
+  }
+  25% {
+    bottom: 6%;
+  }
+  100% {
+    bottom: -20%;
+  }
+}
+
+@keyframes showSearchToScreen {
+  0% {
+    transform: translateY(9em);
+  }
+  75% {
+    transform: translateY(-2em);
+  }
+  100% {
+    transform: translateY(0em);
+  }
+}
+
+@keyframes removeSearchFromScreen {
+  0% {
+    transform: translateY(0em);
+  }
+  25% {
+    transform: translateY(-2em);
+  }
+  100% {
+    transform: translateY(9em);
+  }
+}
+
+@keyframes alternateWave {
+  0% {
+    transform: translateY(0em);
+  }
+  50% {
+    transform: translateY(-2.5em);
+  }
+  100% {
+    transform: translateY(0em);
   }
 }

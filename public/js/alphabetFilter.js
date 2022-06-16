@@ -5,7 +5,10 @@ const alphabet =
 "V", "W", "X", "Y", "Z" ];
 
 const alphabetField = document.getElementById("alphabet-filter");
+const alphabetFilterBtn = document.getElementById("alphabet-filter-btn");
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
+
+const searchInput = document.getElementById("search-input");
 
 const newLabel = document.createElement("label");
 const newInput = document.createElement("input");
@@ -28,10 +31,32 @@ alphabet.forEach((letter) => {
 const alphabetInput = document.querySelectorAll("input[name=alphabet]");
 
 alphabetInput.forEach((input) => {
-  input.addEventListener("change", test);
+  input.addEventListener("change", filterOnAlphabet);
 });
 
-function test(d) {
+alphabetFilterBtn.addEventListener("click", () => {
+  let computedStyles = window.getComputedStyle(alphabetField);
+  alphabetField.style.animation =
+    computedStyles.getPropertyValue("animation") ===
+      "0s ease 0s 1 normal none running none" ||
+    computedStyles.getPropertyValue("animation") ===
+      "1s ease-in-out 0s 1 normal none running removeAlphabetFromScreen"
+      ? "1s ease-in-out 0s 1 normal forwards running showAlphabetToScreen"
+      : "1s ease-in-out 0s 1 normal none running removeAlphabetFromScreen";
+
+  if (
+    alphabetField.style.animation ===
+      "1s ease-in-out 0s 1 normal forwards running showAlphabetToScreen" &&
+    (searchInput.style.animation ===
+      "1s ease-in-out 0s 1 normal forwards running showSearchToScreen" ||
+      searchInput.style.animation === "0s ease 0s 1 normal none running none")
+  ) {
+    searchInput.style.animation =
+      "1s ease-in-out 0s 1 normal none running removeSearchFromScreen";
+  }
+});
+
+function filterOnAlphabet(d) {
   if (d.target.value === "All") {
     Array.from(specialtyTeacher).forEach((element) => {
       element.classList.remove("is-hidden");
