@@ -3,13 +3,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-#date {
- 
-  display: block;
-  position: sticky;
-
-}
-
 /* HOME BUTTON */
 
 header a {
@@ -35,6 +28,40 @@ header a:active {
   background-color: #ffffff;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+/* MEER BUTTON */
+
+.button-detail {
+  display: block;
+  height: 40px;
+  width: 70px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 13px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  border: 3px black solid;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 9px rgb(15, 15, 15);
+  bottom: 3%;
+  left: 90%;
+}
+
+.button-detail:active {
+  background-color: #ffffff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* DATUM  */
+
+#date {
+  display: block;
+  position: sticky;
+  text-align: center;
 }
 
 /* CONTENT TEACHERS */
@@ -95,6 +122,40 @@ header a:active {
   background-color: white;
   border-radius: 5px;
   text-align: center;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.card__face {
+  backface-visibility: hidden;
+  height: 100%;
+}
+
+.card__face--front {
+  float: left;
+}
+
+.is-flipped .card__face--front {
+  display: none;
+}
+
+.card__face--back {
+  text-align: center;
+  word-break: break-word;
+  transform: rotateY(180deg);
+  display: none;
+}
+
+.is-flipped .card__face--back {
+  display: block;
+}
+
+.card__face--back h1 { 
+  font-size: large;
+}
+.teacher.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
 }
 
 .teacher-link {
@@ -142,7 +203,6 @@ header a:active {
 .teacher-info-pic {
   margin-right: 2em;
 }
-
 
 /* ICONS */
 
@@ -254,5 +314,130 @@ nav button:hover {
   }
   100% {
     transform: rotate(-30deg);
+  }
+}
+
+/* ANIMATIE CONFETTI */
+
+#confetti-wrapper {
+  overflow: hidden;
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0%;
+  left: 0%;
+  pointer-events: none;
+}
+
+.confetti {
+  width: 15px;
+  height: 15px;
+  background-color: #f2d74e;
+  position: absolute;
+  left: 50%;
+  animation: confetti 5s ease-in-out -2s infinite;
+  transform-origin: left top;
+}
+
+.confetti:nth-child(1) {
+  background-color: #e64c54;
+  left: 10%;
+  animation-delay: 0;
+}
+
+.confetti:nth-child(2) {
+  background-color: #7539dd;
+  left: 20%;
+  animation-delay: -5s;
+}
+
+.confetti:nth-child(3) {
+  background-color: #198fd3;
+  left: 30%;
+  animation-delay: -3s;
+}
+
+.confetti:nth-child(4) {
+  background-color: #cd7930;
+  left: 40%;
+  animation-delay: -2.5s;
+}
+
+.confetti:nth-child(5) {
+  background-color: #3aec93;
+  left: 50%;
+  animation-delay: -4s;
+}
+
+.confetti:nth-child(6) {
+  background-color: #e64c54;
+  left: 60%;
+  animation-delay: -6s;
+}
+
+.confetti:nth-child(7) {
+  background-color: #7539dd;
+  left: 70%;
+  animation-delay: -1.5s;
+}
+
+.confetti:nth-child(8) {
+  background-color: #198fd3;
+  left: 80%;
+  animation-delay: -2s;
+}
+
+.confetti:nth-child(9) {
+  background-color: #cd7930;
+  left: 90%;
+  animation-delay: -3.5s;
+}
+
+.confetti:nth-child(10) {
+  background-color: #3aec93;
+  left: 100%;
+  animation-delay: -2.5s;
+}
+
+.confetti:nth-child(11) {
+  background-color: #e64c54;
+  left: 72%;
+  animation-delay: -5.5s;
+}
+
+.confetti:nth-child(12) {
+  background-color: #7539dd;
+  left: 34%;
+  animation-delay: -2.8s;
+}
+
+.confetti:nth-child(13) {
+  background-color: #198fd3;
+  left: 100%;
+  animation-delay: -7.5s;
+}
+
+.confetti:nth-child(14) {
+  background-color: #cd7930;
+  left: 16%;
+  animation-delay: -8.5s;
+}
+
+@keyframes confetti {
+  0% {
+    transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+  }
+  25% {
+    transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+  }
+  50% {
+    transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+  }
+  75% {
+    transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+  }
+  100% {
+    transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
   }
 }

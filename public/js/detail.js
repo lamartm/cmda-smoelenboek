@@ -43,3 +43,25 @@ teacherName.addEventListener("click", () => {
     imgAnimation2.animate(extraImg2Moving, extraImgTiming);
   }
 });
+
+// TIME OUT DETAIL TERUG NAAR HOME
+
+// setTimeout(function(){ 
+//   window.location="home"; 
+// }, redirect,5000);
+
+function redirect(){
+  window.location.href = "/";
+  }
+  var initial=setTimeout(redirect,6000);
+ document.addEventListener("click", test)
+
+ function test(event) { 
+  clearTimeout( initial );
+  initial=setTimeout(redirect,6000); 
+  }
+
+  $(document).click(function(event) { 
+  clearTimeout( initial );
+  initial=setTimeout(redirect,12000); 
+  });

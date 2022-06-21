@@ -1,39 +1,64 @@
 <%- include ("./partials/head.ejs") %>
 
-
+<header>
     <h1 id="date"></h1>
+</header>   
 
-
-
+<main>
 <div class="container">
-    <section class="teachers">
+    <section class="teachers">  
         <% document.forEach(teacher => { %>
             <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+            
             <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
-                <a href="<%= encodedURL %>" class="teacher-link">
                     <article class="teacher bck-grey">
-                        <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                        <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        <div class="card__face card__face--front">
+                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
+                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        </div>
+
+                        <div class="card__face card__face--back">
+                            <h1><%- teacher.data.beschikbaarheid.length == 0 ? "None" : teacher.data.beschikbaarheid[0].text %></h1>
+                            <h1><%- teacher.data.email.length == 0 ? "None" : teacher.data.email[0].text %></h1>
+                            <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+                        </div>
                     </article>
-                </a>
-            <% } else{ %> 
-                <a href="<%= encodedURL %>" class="teacher-link">
+            <% } 
+            
+            else{ %> 
                     <article class="teacher">
-                        <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                        <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        <div class="card__face card__face--front">
+                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
+                            <h1><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                        </div>
+
+                        <div class="card__face card__face--back">
+                            <h1><%- teacher.data.beschikbaarheid.length == 0 ? "None" : teacher.data.beschikbaarheid[0].text %></h1>
+                            <h1><%- teacher.data.email.length == 0 ? "None" : teacher.data.email[0].text %></h1>
+                            <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+                        </div>
                     </article>
-                </a>
+             
             <% } %> 
         <% }) %>
+
         <% for (let i = 0; i < 130; i++) { %>
             <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-            <a href="<%= encodedURL %>" class="teacher-link">
-                <article class="teacher">
+            
+            <article class="teacher">
+                <div class="card__face card__face--front">
                     <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
                     <h1><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
-                </article>
-            </a>
+                </div>
+
+                <div class="card__face card__face--back">
+                    <h1><%- document[0].data.beschikbaarheid.length == 0 ? "None" : document[0].data.beschikbaarheid[0].text %></h1>
+                    <h1><%- document[0].data.email.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
+                    <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+                </div>
+            </article>
         <% } %>
+    
     </section>
 </div>
 
@@ -48,6 +73,24 @@
     <button class="goPrecious"><img class="icon" src="/images/up.svg"></button>
     <button class="goNext"><img class="icon" src="/images/down.svg"></button>
 </nav>
+
+<div id="confetti-wrapper">
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
+
+</main>
 
 <script type="module" src="/js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>

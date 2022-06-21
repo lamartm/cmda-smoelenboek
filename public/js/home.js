@@ -39,11 +39,9 @@ const getCurrentTimeDate = () => {
   document.getElementById("date").innerHTML = currentDay + " " +  fullDate;
  
   setTimeout(getCurrentTimeDate, 3600000);
-
 }
 
 getCurrentTimeDate();
-
 
 // NAVIGATIE ZOEKEN
 
@@ -120,4 +118,33 @@ function goNext() {
     top: 320,
     behavior: "smooth",
   });
+}
+
+// ANIMATIE FLIP
+
+var teacher = document.querySelectorAll('.teacher');
+
+[...teacher].forEach((teacher)=>{
+  teacher.addEventListener( 'click', function() {
+    teacher.classList.toggle('is-flipped');
+  });
+});
+
+// ANIMATIE CONFETTI
+
+confetti()
+
+function confetti() {
+  setTimeout(() => {
+    document.getElementById("confetti-wrapper").style.display = "initial"
+    setTimeout(confettiNone, 10000)
+  })
+}
+
+
+function confettiNone() {
+  setTimeout(() => {
+    document.getElementById("confetti-wrapper").style.display = "none"
+    setTimeout(confetti, 60000)
+  })
 }
