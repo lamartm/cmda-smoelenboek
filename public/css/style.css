@@ -58,8 +58,33 @@ header a:active {
   color: black;
   font-weight: 800;
   font-size: 0.8rem;
-  bottom: 6%;
-  left: 1%;
+  bottom: -6%;
+  left: 5%;
+  animation: none;
+}
+
+#alphabet-select {
+  position: fixed;
+  color: black;
+  font-weight: 800;
+  font-size: 0.8rem;
+  bottom: -6%;
+  left: 5%;
+  animation: none;
+}
+
+#search-select {
+  position: fixed;
+  bottom: -6%;
+  left: 5%;
+  animation: none;
+}
+
+#filter-select {
+  position: fixed;
+  bottom: -6%;
+  left: 5%;
+  animation: none;
 }
 
 .letterInput {
@@ -115,6 +140,7 @@ header a:active {
 }
 
 #search-teacher-btn {
+  position: relative;
   z-index: 1;
   padding: 0.6em;
   cursor: pointer;
@@ -239,32 +265,68 @@ header a:active {
   display: flex;
   position: fixed;
   justify-content: center;
-  bottom: 6%;
-  left: 5%;
+  bottom: -6%;
+  left: 5.2%;
+  animation: none;
   z-index: 1;
 }
 
 #search-input {
-  transform: translateY(9em);
+  transform: translate(1em, 18.3em);
   animation: none;
 }
 
 #filter {
   position: fixed;
-  bottom: 4%;
-  right: 5%;
+  bottom: -6%;
+  left: 5%;
+  animation: none;
+}
+
+#filters {
+  display: flex;
+  position: fixed;
+  bottom: 1%;
+  left: 5%;
+}
+
+.filterSelect {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: -24%;
+  top: -14%;
+  border-radius: 100%;
+  background: red;
+}
+
+#filterSelect1 {
+  display: none;
+  left: -34%;
+}
+
+#filterSelect2 {
+  display: none;
+}
+
+#filterSelect3 {
+  display: none;
+}
+
+#filterSelect4 {
+  display: none;
 }
 
 #upButton {
   position: fixed;
   bottom: 7%;
-  right: 1%;
+  left: 1%;
 }
 
 #downButton {
   position: fixed;
   bottom: 1%;
-  right: 1%;
+  left: 1%;
 }
 
 .beschrijving-leeraar {
@@ -314,12 +376,12 @@ header a:active {
 }
 
 #specialty-filter {
-  display: none;
   background-color: white;
   border: 3px black solid;
   position: fixed;
-  bottom: 11%;
-  right: 5.2%;
+  bottom: -23%;
+  left: 9.2%;
+  animation: none;
 }
 
 .is-hidden {
@@ -352,6 +414,20 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
+/* Filtering elements */
+
+.filterAlphabet {
+  display: none;
+}
+
+.filterText {
+  display: none;
+}
+
+.filterSpecialty {
+  display: none;
+}
+
 /* ANIMATIE PUPPY */
 
 .extraImg {
@@ -376,9 +452,33 @@ button:hover {
   }
 }
 
+@keyframes showSpecialtiesToScreen {
+  0% {
+    bottom: -23%;
+  }
+  75% {
+    bottom: 2%;
+  }
+  100% {
+    bottom: 1%;
+  }
+}
+
+@keyframes removeSpecialtiesFromScreen {
+  0% {
+    bottom: 1%;
+  }
+  25% {
+    bottom: 2%;
+  }
+  100% {
+    bottom: -23%;
+  }
+}
+
 @keyframes showAlphabetToScreen {
   0% {
-    bottom: -20%
+    bottom: -20%;
   }
   75% {
     bottom: 6%;
@@ -390,7 +490,7 @@ button:hover {
 
 @keyframes removeAlphabetFromScreen {
   0% {
-    bottom: 3%
+    bottom: 3%;
   }
   25% {
     bottom: 6%;
@@ -402,25 +502,25 @@ button:hover {
 
 @keyframes showSearchToScreen {
   0% {
-    transform: translateY(9em);
+    transform: translate(1em, 18.3em);
   }
   75% {
-    transform: translateY(-2em);
+    transform: translate(1em, 11em);
   }
   100% {
-    transform: translateY(0em);
+    transform: translate(1em, 12em);
   }
 }
 
 @keyframes removeSearchFromScreen {
   0% {
-    transform: translateY(0em);
+    transform: translate(1em, 12em);
   }
   25% {
-    transform: translateY(-2em);
+    transform: translate(1em, 11em);
   }
   100% {
-    transform: translateY(9em);
+    transform: translate(1em, 18.3em);
   }
 }
 
@@ -433,5 +533,79 @@ button:hover {
   }
   100% {
     transform: translateY(0em);
+  }
+}
+
+/* Buttons animation */
+
+@keyframes showAlphabetButtonToScreen {
+  0% {
+    bottom: -6%;
+  }
+  75% {
+    bottom: 13.5%;
+  }
+  100% {
+    bottom: 12.5%;
+  }
+}
+
+@keyframes removeAlphabetButtonFromScreen {
+  0% {
+    bottom: 12.5%;
+  }
+  25% {
+    bottom: 13.5%;
+  }
+  100% {
+    bottom: -6%;
+  }
+}
+
+@keyframes showSearchButtonToScreen {
+  0% {
+    bottom: -6%;
+  }
+  75% {
+    bottom: 19%;
+  }
+  100% {
+    bottom: 18%;
+  }
+}
+
+@keyframes removeSearchButtonFromScreen {
+  0% {
+    bottom: 18%;
+  }
+  25% {
+    bottom: 19%;
+  }
+  100% {
+    bottom: -6%;
+  }
+}
+
+@keyframes showFilterButtonToScreen {
+  0% {
+    bottom: -6%;
+  }
+  75% {
+    bottom: 7.5%;
+  }
+  100% {
+    bottom: 6.5%;
+  }
+}
+
+@keyframes removeFilterButtonFromScreen {
+  0% {
+    bottom: 6.5%;
+  }
+  25% {
+    bottom: 7.5%;
+  }
+  100% {
+    bottom: -6%;
   }
 }

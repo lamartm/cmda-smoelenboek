@@ -1,92 +1,32 @@
 import "./alphabetFilter.js";
-import "./idleAnimation.js";
+import "./idle.js";
+import "./buttonAnimations.js";
+import "./digitalKeyboard.js";
+import { checkForSelectedFilters } from "./checkFilteredOptions.js";
 
-const Keyboard = window.SimpleKeyboard.default;
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-teacher-btn");
-const alphabetField = document.getElementById("alphabet-filter");
-const allAlphabetInput = document.getElementById("All");
 
-const keyboardSimple = document.getElementById("keyboard");
-const keyboardBackground = document.getElementById("keyboard-bg");
+const filtered3 = document.getElementById("filterSelect3");
+
 const upButton = document.getElementById("upButton");
 const downButton = document.getElementById("downButton");
-const filter = document.getElementById("filter");
-const specialtySelection = document.getElementById("specialty-filter");
 const checkBoxes = document.querySelectorAll("input[name=specialty]");
-
-let filterPressed = false;
 
 const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
 // NAVIGATIE ZOEKEN
 
-const keyboard = new Keyboard({
-  onChange: (input) => onChange(input),
-  onKeyPress: (button) => onKeyPress(button),
-});
-
-searchInput.addEventListener("click", (d) => {
-  keyboardBackground.style.display = "initial";
-  keyboardSimple.style.display = "initial";
-});
-
-keyboardBackground.addEventListener("click", (d) => {
-  keyboardBackground.style.display = "none";
-  keyboardSimple.style.display = "none";
-});
-
-document.getElementById("search-teacher").addEventListener("submit", (d) => {
-  d.preventDefault();
-  keyboardBackground.style.display = "none";
-  keyboardSimple.style.display = "none";
-});
-
-searchButton.addEventListener("click", () => {
-  let computedStyles = window.getComputedStyle(searchInput);
-  searchInput.style.animation =
-    computedStyles.getPropertyValue("animation") ===
-      "0s ease 0s 1 normal none running none" ||
-    computedStyles.getPropertyValue("animation") ===
-      "1s ease-in-out 0s 1 normal none running removeSearchFromScreen"
-      ? "1s ease-in-out 0s 1 normal forwards running showSearchToScreen"
-      : "1s ease-in-out 0s 1 normal none running removeSearchFromScreen";
-
-  if (
-    searchInput.style.animation ===
-      "1s ease-in-out 0s 1 normal forwards running showSearchToScreen" &&
-    (alphabetField.style.animation ===
-      "1s ease-in-out 0s 1 normal forwards running showAlphabetToScreen" ||
-      alphabetField.style.animation === "0s ease 0s 1 normal none running none")
-  ) {
-    alphabetField.style.animation =
-      "1s ease-in-out 0s 1 normal none running removeAlphabetFromScreen";
-  }
-
-  allAlphabetInput.checked = true;
-
-  Array.from(specialtyTeacher).forEach((element) => {
-    element.classList.remove("is-hidden");
-  });
-});
-
 searchInput.addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
   performMark();
   Array.from(specialtyTeacher).forEach((element) => {
-    if (
-      element.innerText.toLowerCase().startsWith(currentSearch.toLowerCase())
-    ) {
-      element.classList.remove("is-hidden");
+    if (element.innerText.toLowerCase().includes(currentSearch.toLowerCase())) {
+      element.classList.remove("filterText");
     } else {
-      element.classList.add("is-hidden");
+      element.classList.add("filterText");
     }
   });
-});
-
-document.querySelector(".input").addEventListener("input", (event) => {
-  keyboard.setInput(event.target.value);
 });
 
 // NAVIGATIE SCROLLEN
@@ -98,6 +38,21 @@ downButton.addEventListener("click", (element) => {
   });
 });
 
+let holdState;
+
+downButton.addEventListener("mousedown", (element) => {
+  test = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: 380,
+      behavior: "smooth",
+    });
+  }, 500);
+});
+
+downButton.addEventListener("mouseup", (element) => {
+  clearInterval(holdState);
+});
+
 upButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
     top: -380,
@@ -105,20 +60,8 @@ upButton.addEventListener("click", (element) => {
   });
 });
 
-filter.addEventListener("click", (element) => {
-  if (filterPressed === false) {
-    filterPressed = true;
-    specialtySelection.style.display = "initial";
-  } else {
-    filterPressed = false;
-    specialtySelection.style.display = "none";
-  }
-});
-
 function performMark() {
   let keyword = searchInput.value;
-
-  console.log(keyword);
 
   markInstance.unmark({
     done: function () {
@@ -174,39 +117,29 @@ const filterOnSpecialty = (e) => {
 
   let specialties = [];
 
+  checkedBoxes.length === 0
+    ? (filtered3.style.display = "none")
+    : (filtered3.style.display = "initial");
+
+  checkForSelectedFilters();
+
   checkedBoxes.forEach((d) => {
     specialties.push(d.value.toLowerCase());
   });
 
   specialties.length === 0
     ? specialtyTeacher.forEach((specialty) => {
-        specialty.classList.remove("is-hidden");
+        specialty.classList.remove("filterSpecialty");
       })
     : specialtyTeacher.forEach((specialty) => {
         specialties.some((d) =>
           specialty.getAttribute("data-value").includes(d)
         )
-          ? specialty.classList.remove("is-hidden")
-          : specialty.classList.add("is-hidden");
+          ? specialty.classList.remove("filterSpecialty")
+          : specialty.classList.add("filterSpecialty");
       });
 };
 
 checkBoxes.forEach((d) => {
   d.addEventListener("click", filterOnSpecialty);
 });
-
-function onChange(input) {
-  document.querySelector(".input").value = input;
-  performMark();
-  Array.from(specialtyTeacher).forEach((element) => {
-    if (element.innerText.toLowerCase().includes(input.toLowerCase())) {
-      element.classList.remove("is-hidden");
-    } else {
-      element.classList.add("is-hidden");
-    }
-  });
-}
-
-function onKeyPress(button) {
-  console.log("Button pressed", button);
-}

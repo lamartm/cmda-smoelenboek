@@ -3,50 +3,40 @@
     <section class="teachers">
         <h1 id="date"></h1>
         <ul class="teachers-container">
-        <% document.forEach((teacher, index) => { %>
-            <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-            <% const specialty = Object.keys(teacher.data.specialiteiten[0]).filter(k => teacher.data.specialiteiten[0][k]) %> 
-            
-            <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
-                <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
-                    <a href="<%= encodedURL %>" class="teacher-link">
-                        <article class="teacher bck-grey">
-                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                            <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                        </article>
-                    </a>
-                </li>
-            <% } else{ %> 
-                <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
-                    <a href="<%= encodedURL %>" class="teacher-link">
-                        <article class="teacher">
-                            <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                            <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
-                        </article>
-                    </a>
-                </li>
-            <% } %> 
-        <% }) %>
-        <% for (let i = 0; i < 130; i++) { %>
-            <% const encodedURL = "/detail/" + (document[0].data.teachername.length == 0 ? "" : document[0].data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-            <% const specialty = Object.keys(document[0].data.specialiteiten[0]).filter(k => document[0].data.specialiteiten[0][k]) %> 
-            <li class="specialty-teacher" data-value="<%- specialty %>">
-                <a href="<%= encodedURL %>" class="teacher-link">
-                    <article class="teacher">
-                        <img src="<%- document[0].data.teacherpic.url %>" class="pic-size"/>
-                        <h1 class="teacher-name"><%- document[0].data.teachername.length == 0 ? "None" : document[0].data.teachername[0].text %></h1>
-                    </article>
-                </a>
-            </li>
-        <% } %>       
+        <% for (let i = 0; i < 16; i++) { %>
+            <% document.forEach((teacher, index) => { %>
+                <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+                <% const specialty = Object.keys(teacher.data.specialiteiten[0]).filter(k => teacher.data.specialiteiten[0][k]) %> 
+                
+                <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
+                    <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
+                        <a href="<%= encodedURL %>" class="teacher-link">
+                            <article class="teacher bck-grey">
+                                <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
+                                <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                            </article>
+                        </a>
+                    </li>
+                <% } else{ %> 
+                    <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
+                        <a href="<%= encodedURL %>" class="teacher-link">
+                            <article class="teacher">
+                                <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
+                                <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                            </article>
+                        </a>
+                    </li>
+                <% } %> 
+            <% }) %>
+        <% } %>  
     </ul>
     </section>
 </div>
 
-<button id="alphabet-filter-btn">A-Z</button>
+<button id="alphabet-filter-btn">A-Z <div class="filterSelect" id="filterSelect2" /></button>
 <form id="search-teacher">
-    <button id="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"></button>
-    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar">
+    <button id="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"> <div class="filterSelect" id="filterSelect1" /></button>
+    <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar" autocomplete="off">
     <div id="keyboard-bg"></div>
     <div id="keyboard" class="simple-keyboard"></div>
 </form>
@@ -83,7 +73,8 @@
     <label class="letterLabel" for="All">All</label>
 </fieldset>
 
-<button id="filter"><img class="icon" src="/images/filter.svg"></button>
+<button id="filter"><img class="icon" src="/images/filter.svg"> <div class="filterSelect" id="filterSelect3" /></button>
+<button id="filters"><img class="icon" src="/images/filters.svg"> <div class="filterSelect" id="filterSelect4" /></button>
 
 <nav>
     <button id="upButton"><img class="icon" src="/images/up.svg"></button>
