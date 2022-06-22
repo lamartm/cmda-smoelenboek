@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(248, 189, 25);
+  background-color: #f8bd19;
   font-family: "Poppins", sans-serif;
 }
 
@@ -56,12 +56,138 @@ header a:active {
   transform: translateY(4px);
 }
 
+/* RANDOM BUTTON  */
+
+.toggle {
+  position: absolute;
+  font-size: 20px; 
+  width: 5em;
+  height: 8em;
+  margin: 0;
+  filter: opacity(0);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.toggle ~ .switch {
+  position: absolute;
+  width: 5em;
+  height: 8em;
+  background: linear-gradient(#d2d4d6, white);
+  border-radius: 1.2em;
+  box-shadow: 
+      inset 0 -0.2em 0.4em rgba(212, 212, 212, 0.75), 
+      inset 0 -0.8em 0 0.1em rgba(156, 156, 156, 0.85), 
+      0 0 0 0.1em rgba(116, 116, 116, 0.8), 
+      0 0.6em 0.6em rgba(41, 41, 41, 0.3), 
+      0 0 0 0.4em #d4d7d8;
+}
+
+.toggle ~ .switch::before,
+.toggle ~ .switch::after {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+  font-family: sans-serif;
+}
+
+.toggle ~ .switch::before {
+  content: '|';
+  bottom: 1em;
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.8);
+}
+
+.toggle ~ .switch::after {
+  content: 'O';
+  top: 0.6em;
+  color: rgba(0, 0, 0, 0.45);
+  text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.4);
+}
+
+.toggle:checked ~ .switch {
+  background: linear-gradient(#a1a2a3, #f0f0f0);
+  box-shadow: 
+      inset 0 0.2em 0.4em rgba(212, 212, 212, 0.75), 
+      inset 0 0.8em 0 0.1em rgba(255, 255, 255, 0.77), 
+      0 0 0 0.1em rgba(116, 116, 116, 0.8), 
+      0 -0.2em 0.2em rgba(41, 41, 41, 0.18), 
+      0 0 0 0.4em #d4d7d8;
+}
+
+.toggle:checked ~ .switch::before {
+  bottom: 0.3em;
+  text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.5);
+}
+
+.toggle:checked ~ .switch::after {
+  top: 1.2em;
+  text-shadow: 0 0.1em 0 rgba(255, 255, 255, 0.15);
+}
+
+.toggle ~ .light {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a16;
+  z-index: 1;
+  filter: opacity(0.7);
+}
+
+.toggle:checked ~ .light {
+  filter: opacity(0);
+}
+
 /* DATUM  */
 
 #date {
-  display: block;
-  position: sticky;
+  margin: 0;
+  padding: 0;
   text-align: center;
+}
+
+/* LEGENDA */
+
+header div {
+  display: flex;
+  justify-content: center;
+}
+
+#legenda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+#legenda span {
+  background-color: #d5d5d5;
+}
+
+#legenda2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+#legenda2 span {
+  background-color: #ff0000;
+}
+
+header div span {
+border-radius: 50%;
+border: 2px solid #000000;
+height: 20px;
+width: 20px;
+margin: 0;
+padding: 0;
+display: inline-block;
+margin-right: 3px;
 }
 
 /* CONTENT TEACHERS */
@@ -84,7 +210,7 @@ header a:active {
   grid-gap: 1em;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   justify-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   border-radius: 5px;
   scroll-snap-type: y mandatory;
 }
@@ -152,7 +278,7 @@ header a:active {
 }
 
 .card__face--back h1 { 
-  font-size: large;
+  font-size: 15px;
 }
 .teacher.is-flipped {
   transform: translateX(-100%) rotateY(-180deg);

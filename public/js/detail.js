@@ -46,22 +46,14 @@ teacherName.addEventListener("click", () => {
 
 // TIME OUT DETAIL TERUG NAAR HOME
 
-// setTimeout(function(){ 
-//   window.location="home"; 
-// }, redirect,5000);
-
 function redirect(){
   window.location.href = "/";
   }
-  var initial=setTimeout(redirect,6000);
+  var initial=setTimeout(redirect,60000);
  document.addEventListener("click", test)
+ window.addEventListener("scroll", test)
 
  function test(event) { 
   clearTimeout( initial );
-  initial=setTimeout(redirect,6000); 
+  initial=setTimeout(redirect,60000); 
   }
-
-  $(document).click(function(event) { 
-  clearTimeout( initial );
-  initial=setTimeout(redirect,12000); 
-  });

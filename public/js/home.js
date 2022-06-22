@@ -1,5 +1,6 @@
 const Keyboard = window.SimpleKeyboard.default;
-const teachers = document.getElementsByClassName("teacher-link");
+const teachersLinks = document.getElementsByClassName("teacher-link");
+const teachers = document.getElementsByClassName("teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 
@@ -68,7 +69,7 @@ document.getElementById("search-teacher").addEventListener("submit", (d) => {
 
 document.getElementById("search-input").addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
-  Array.from(teachers).forEach((element) => {
+  Array.from(teachersLinks).forEach((element) => {
     if (
       element.innerText.toLowerCase().startsWith(currentSearch.toLowerCase())
     ) {
@@ -85,7 +86,7 @@ document.querySelector(".input").addEventListener("input", (event) => {
 
 function onChange(input) {
   document.querySelector(".input").value = input;
-  Array.from(teachers).forEach((element) => {
+  Array.from(teachersLinks).forEach((element) => {
     if (element.innerText.toLowerCase().startsWith(input.toLowerCase())) {
       element.classList.remove("is-hidden");
     } else {
@@ -102,7 +103,6 @@ function onKeyPress(button) {
 
 const element = document.querySelector(".goPrecious");
 element.addEventListener("click", goPrecious);
-
 function goPrecious() {
   document.querySelector("html").scrollBy({
     top: -320,
@@ -110,8 +110,25 @@ function goPrecious() {
   });
 }
 
-const el = document.querySelector(".goNext");
-el.addEventListener("click", goNext);
+let holdState;
+
+const downButton = document.querySelector(".goPrecious");
+downButton.addEventListener("mousedown", (element) => {
+  
+  holdState = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: -320,
+      behavior: "smooth",
+    });
+  }, 500);
+});
+
+downButton.addEventListener("mouseup", (element) => {
+  clearInterval(holdState);
+});
+
+const upButton = document.querySelector(".goNext");
+upButton.addEventListener("click", goNext);
 
 function goNext() {
   document.querySelector("html").scrollBy({
@@ -119,6 +136,40 @@ function goNext() {
     behavior: "smooth",
   });
 }
+
+let holdStateTwo;
+
+upButton.addEventListener("mousedown", (element) => {
+  
+  holdStateTwo = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: 320,
+      behavior: "smooth",
+    });
+  }, 500);
+});
+
+upButton.addEventListener("mouseup", (element) => {
+  clearInterval(holdStateTwo);
+});
+
+// TIME OUT FLIP TERUG NAAR HOME
+
+let initial;
+
+function redirectFlip(){
+  Array.from(teachers).forEach(element => {
+    element.classList.remove("is-flipped");
+  })
+  }
+
+ document.addEventListener("click", testt)
+ window.addEventListener("scroll", testt)
+
+ function testt(event) { 
+  clearTimeout( initial );
+  initial=setTimeout(redirectFlip,60000); 
+  }
 
 // ANIMATIE FLIP
 
@@ -141,10 +192,18 @@ function confetti() {
   })
 }
 
-
 function confettiNone() {
   setTimeout(() => {
     document.getElementById("confetti-wrapper").style.display = "none"
     setTimeout(confetti, 60000)
   })
+}
+
+// ANIMATIE RANDOM 
+
+function GetValue()
+{
+    var myarray= new Array("item1","item2","item3");
+    var random = myarray[Math.floor(Math.random() * myarray.length)];
+    document.getElementById("light").innerHTML=random;
 }

@@ -1,7 +1,11 @@
 <%- include ("./partials/head.ejs") %>
 
 <header>
-    <h1 id="date"></h1>
+        <h1 id="date"></h1>
+        <div>
+            <p id="legenda"><span></span>Afwezig</p>
+            <p id="legenda2"><span></span>Filter aan</p>
+        </div>
 </header>   
 
 <main>
@@ -73,6 +77,12 @@
     <button class="goPrecious"><img class="icon" src="/images/up.svg"></button>
     <button class="goNext"><img class="icon" src="/images/down.svg"></button>
 </nav>
+
+<input type="checkbox" checked="checked" class="toggle" onclick="GetValue();" >
+    <div class="switch"></div>
+    <div id="light"></div>
+
+
 
 <div id="confetti-wrapper">
       <div class="confetti"></div>
