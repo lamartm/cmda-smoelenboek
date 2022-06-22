@@ -121,7 +121,7 @@ header a:active {
   position: relative;
   width: 90%;
   margin: 0em auto;
-  padding: 2em;
+  padding: 0em 1.5em 1.5em 1.5em;
   display: grid;
   border: 4px solid black;
   justify-items: center;
@@ -559,7 +559,7 @@ button:hover {
     transform: translateY(0em);
   }
   50% {
-    transform: translateY(-2.5em);
+    transform: translateY(-0.5em);
   }
   100% {
     transform: translateY(0em);
