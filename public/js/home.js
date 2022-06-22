@@ -4,6 +4,8 @@ const teachers = document.getElementsByClassName("teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 
+// SPLIT SCREEN
+
 if (
   window.location.pathname === "/" 
 ) {
@@ -16,6 +18,7 @@ if (
 }
 
 // AUTOMATISCHE DATUM
+
 const getCurrentTimeDate = () => {
   let currentTimeDate = new Date();
 

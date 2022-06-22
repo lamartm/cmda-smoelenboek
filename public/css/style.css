@@ -3,10 +3,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* HOME BUTTON */
-.homeHeader {
+/* GEEN SPLIT SCREEN OP DETAILPAGE */
+
+.noSplit {
   padding-top: 40em;
 }
+
+/* HOME BUTTON */
 
 header a {
   display: block;
@@ -23,8 +26,8 @@ header a {
   outline: none;
   box-shadow: 0 9px rgb(15, 15, 15);
   position: absolute;
-  bottom: 3%;
-  left: 90%;
+  bottom: 30px;
+  left: 30px;
 }
 
 header a:active {
@@ -74,8 +77,8 @@ header a:active {
 
 .toggle ~ .switch {
   position: absolute;
-  width: 5em;
-  height: 8em;
+  width: 2em;
+  height: 4em;
   background: linear-gradient(#d2d4d6, white);
   border-radius: 1.2em;
   box-shadow: 
@@ -91,7 +94,7 @@ header a:active {
   position: absolute;
   width: 100%;
   text-align: center;
-  font-size: 1.4em;
+  font-size: -1.4em;
   font-family: sans-serif;
 }
 
