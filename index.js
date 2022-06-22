@@ -7,7 +7,7 @@ import { client } from "./config/prismicConfig.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
-// WEERGAVE BESCHIKBAARHEID 
+// WEERGAVE BESCHIKBAARHEID
 
 const options = {
   weekday: "long",

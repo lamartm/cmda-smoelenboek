@@ -26,7 +26,7 @@ const titleShaking = [
   { transform: "rotate(-5deg)" },
   { transform: "rotate(5deg)" },
   { transform: "rotate(-5deg)" },
-  { transform: "rotate(5deg)" },
+  { transform: "rotate(0deg)" },
 ];
 
 const titleTiming = {
