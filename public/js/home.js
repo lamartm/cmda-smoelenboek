@@ -4,6 +4,17 @@ const teachers = document.getElementsByClassName("teacher");
 const keyboardSimple = document.getElementById("keyboard");
 const keyboardBackground = document.getElementById("keyboard-bg");
 
+if (
+  window.location.pathname === "/" 
+) {
+  window.onload = () => {
+    window.scrollTo({
+      top: 640,
+      behavior: "smooth",
+    });
+  };
+}
+
 // AUTOMATISCHE DATUM
 const getCurrentTimeDate = () => {
   let currentTimeDate = new Date();

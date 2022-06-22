@@ -4,6 +4,9 @@ body {
 }
 
 /* HOME BUTTON */
+header {
+  padding-top: 40em;
+}
 
 header a {
   display: block;
@@ -451,7 +454,7 @@ nav button:hover {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  top: 0%;
+  top: 100%;
   left: 0%;
   pointer-events: none;
 }
