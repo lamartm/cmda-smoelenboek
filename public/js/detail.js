@@ -2,6 +2,20 @@ const teacherName = document.getElementById("teacher-info-name");
 const imgAnimation = document.getElementById("extra-img-animation");
 const imgAnimation2 = document.getElementById("extra-img-animation2");
 
+// const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase()
+
+if (
+  window.location.pathname === "/" 
+
+) {
+  window.onload = () => {
+    window.scrollTo({
+      top: 640,
+      behavior: "smooth",
+    });
+  };
+}
+
 // ANIMATIE PUPPY
 
 let count = 0;
