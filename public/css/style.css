@@ -46,9 +46,9 @@ header a:active {
   grid-gap: 0.4em;
   grid-template-columns: repeat(9, 1fr);
   border: none;
-  position: fixed;
-  bottom: -20%;
-  left: 56%;
+  position: absolute;
+  bottom: -9.4em;
+  left: 18em;
   transform: translateX(-50%);
   animation: none;
 }
@@ -478,25 +478,25 @@ button:hover {
 
 @keyframes showAlphabetToScreen {
   0% {
-    bottom: -20%;
+    bottom: -9.4em;
   }
   75% {
-    bottom: 6%;
+    bottom: 0em;
   }
   100% {
-    bottom: 3%;
+    bottom: -0.4em;
   }
 }
 
 @keyframes removeAlphabetFromScreen {
   0% {
-    bottom: 3%;
+    bottom: -0.4em;
   }
   25% {
-    bottom: 6%;
+    bottom: 0em;
   }
   100% {
-    bottom: -20%;
+    bottom: -9.4em;
   }
 }
 

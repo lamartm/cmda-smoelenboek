@@ -68,13 +68,15 @@
     </div>
 </fieldset>
 
-<fieldset id="alphabet-filter">
-    <input class="letterInput" type="radio" id="All" name="alphabet" value="All" />
-    <label class="letterLabel" for="All">All</label>
-</fieldset>
-
 <button id="filter"><img class="icon" src="/images/filter.svg"> <div class="filterSelect" id="filterSelect3" /></button>
-<button id="filters"><img class="icon" src="/images/filters.svg"> <div class="filterSelect" id="filterSelect4" /></button>
+<button id="filters">
+    <fieldset id="alphabet-filter">
+        <input class="letterInput" type="radio" id="All" name="alphabet" value="All" />
+        <label class="letterLabel" for="All">All</label>
+    </fieldset>
+    <img class="icon" src="/images/filters.svg">
+    <div class="filterSelect" id="filterSelect4" />
+</button>
 
 <nav>
     <button id="upButton"><img class="icon" src="/images/up.svg"></button>

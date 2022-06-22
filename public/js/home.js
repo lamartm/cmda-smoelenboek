@@ -41,7 +41,7 @@ downButton.addEventListener("click", (element) => {
 let holdState;
 
 downButton.addEventListener("mousedown", (element) => {
-  test = setInterval(() => {
+  holdState = setInterval(() => {
     document.querySelector("html").scrollBy({
       top: 380,
       behavior: "smooth",
