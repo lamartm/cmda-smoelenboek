@@ -178,7 +178,9 @@ Eventueel met de website van CMD Amsterdam.
 Vasilis van Gemert wilt voor CMD Amsterdam een online smoelenboek met de mogelijkheid dat docenten extra informatie over zichzelf kunnen delen om ook op andere vlakken met elkaar te kunnen connecten. Ook moet het voor studenten zichtbaar zijn om een gezicht bij een naam te kunnen vinden. Tot vorig jaar hingen er fysieke foto's en er zijn inmiddels zoveel nieuwe docenten dat dit fysiek te groot wordt. Het doel is daarom om een interactief en digitaal smoelenboek op te richten waarbij alle docenten met z'n allen op een heel groot scherm zichtbaar zijn. Je moet kunnen klikken op een foto en dan meer info kunnen lezen over de persoon. Tenslotte zou het fijn zijn als het gekoppeld is aan een bestaande API zodat docenten hun eigen profiel kunnen updaten.
 
 ### Oplossing 
-algemeen: groot scherm, user story's 
+Er is een online en interactief smoelenboek gemaakt waarop alle docenten in één oogopslag te zien zijn. Dit smoelenboek is te zien op één groot touchscreen scherm op de derde verdieping in de medialounge. Via een headless CMS-systeem is er data aangemaakt waarin docenten meer informatie over zichzelf kunnen delen. Dit wordt weergegeven op de detailpage van die specifieke docent. Via deze weg zijn er mogelijkheden om nieuwe connecties te maken. Daarbij zijn er verschillende filters: zoekbalk, a t/m z en vakgebied, waarop studenten kunnen zoeken om snel een naam bij een gezicht te kunnen vinden. Kijkende naar de userstory's:
+
+
 
 Design keuzes:
 - scroll button
