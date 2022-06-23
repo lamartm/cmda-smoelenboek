@@ -49,6 +49,7 @@ downButton.addEventListener("click", (element) => {
 });
 
 let holdState;
+let holdStateFour;
 
 downButton.addEventListener("mousedown", (element) => {
   holdState = setInterval(() => {
@@ -63,7 +64,21 @@ downButton.addEventListener("mouseup", (element) => {
   clearInterval(holdState);
 });
 
+downButton.addEventListener("touchstart", (element) => {
+  holdStateFour = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: 180,
+      behavior: "smooth",
+    });
+  }, 500);
+}, true);
+
+downButton.addEventListener("touchend", (element) => {
+  clearInterval(holdStateFour);
+});
+
 let holdStateTwo;
+let holdStateThree;
 
 upButton.addEventListener("mousedown", (element) => {
   holdStateTwo = setInterval(() => {
@@ -72,6 +87,19 @@ upButton.addEventListener("mousedown", (element) => {
       behavior: "smooth",
     });
   }, 500);
+});
+
+upButton.addEventListener("touchstart", (element) => {
+  holdStateThree = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: -180,
+      behavior: "smooth",
+    });
+  }, 500);
+}, true);
+
+upButton.addEventListener("touchend", (element) => {
+  clearInterval(holdStateThree);
 });
 
 upButton.addEventListener("mouseup", (element) => {
