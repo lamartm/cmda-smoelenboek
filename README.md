@@ -24,11 +24,11 @@ https://user-images.githubusercontent.com/99180082/175385271-8254c073-d96a-4504-
 
 https://user-images.githubusercontent.com/99180082/175385281-e35c74d1-84c3-4b8f-b271-fd0bc25efc88.mov
 
-</details
- 
+</details>
+
 <details>
 <summary>Zoekfunctie A t/m Z</summary>
- 
+
 https://user-images.githubusercontent.com/99180082/175385292-ae5564ba-f47b-4048-9baa-ed0aac3830e7.mov
 
 </details>
