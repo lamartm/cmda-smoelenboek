@@ -125,10 +125,31 @@ Eventueel met de website van CMD Amsterdam.
 Vasilis van Gemert wilt voor CMD Amsterdam een online smoelenboek met de mogelijkheid dat docenten extra informatie over zichzelf kunnen delen om ook op andere vlakken met elkaar te kunnen connecten. Ook moet het voor studenten zichtbaar zijn om een gezicht bij een naam te kunnen vinden. Tot vorig jaar hingen er fysieke foto's en er zijn inmiddels zoveel nieuwe docenten dat dit fysiek te groot wordt. Het doel is daarom om een interactief en digitaal smoelenboek op te richten waarbij alle docenten met z'n allen op een heel groot scherm zichtbaar zijn. Je moet kunnen klikken op een foto en dan meer info kunnen lezen over de persoon. Tenslotte zou het fijn zijn als het gekoppeld is aan een bestaande API zodat docenten hun eigen profiel kunnen updaten.
 
 ### Oplossing 
+algemeen: groot scherm, user story's 
+
+Design keuzes:
+- scroll button
+- filters groepering 
+- navigatie links 
+- usability space 
+- AZ filter
+- Zoek filter
+- Vakgebied filter  
+- Flip 
+- Automatische datum met legenda
+- Animaties 
+- detail
+- data 
 
 ### Uitleg code 
+Mo
 
 ### Overdracht 
+Hoe installeren/klaarzetten 
+
+Hoe werkt prismic/accounts aanmaken
+
+Hoe fullscreen voor optimaal gebruik
 
 
 ### Link naar wiki's
@@ -144,3 +165,24 @@ Vasilis van Gemert wilt voor CMD Amsterdam een online smoelenboek met de mogelij
 - Mozilla. (2022a, april 5). scroll-snap-type - CSS: Cascading Style Sheets | MDN. Geraadpleegd op 1 juni 2022, van (https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type)
 - Mozilla. (2022b, mei 31). Element.scrollLeft - Web APIs | MDN. Geraadpleegd op 1 juni 2022, van (https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft)
 - Stack Overflow. (2019, 16 augustus). CSS Scroll Snap Points with navigation (next, previous) buttons. Geraadpleegd op 1 juni 2022, van (https://stackoverflow.com/questions/57518428/css-scroll-snap-points-with-navigation-next-previous-buttons)
+
+
+WAFS 
+- API
+- user interface > nagedacht over 1 scherm
+- single web page 
+
+CSS
+- Animaties 
+
+PWA
+- Server side rendering express
+
+BT
+- Niet voor verschillende browser want hoeft maar op 1 browser voor 1 scherm. Wel nagedacht over usability. 
+
+RTW
+- niets hoeft real time 
+
+HCD
+- Nagedacht over mensen met beperking en onderzocht of voice kon. 

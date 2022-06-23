@@ -15,6 +15,11 @@ body {
   display: block;
   position: sticky;
 }
+
+.widthFull {
+  width: 100%;
+}
+
 /* GEEN SPLIT SCREEN OP DETAILPAGE */
 
 /* HOME BUTTON */
@@ -261,7 +266,7 @@ header div {
 }
 
 #legenda2 span {
-  background-color: #ff0000;
+  background-color: #ffffff;
 }
 
 header div span {
@@ -604,12 +609,19 @@ margin-right: 3px;
 }
 
 #specialty-filter {
+  z-index: 1;
   background-color: white;
   border: 3px black solid;
   position: fixed;
   bottom: -43%;
   left: 10em;
   animation: none;
+}
+
+.specialty-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .is-hidden {

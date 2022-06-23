@@ -47,7 +47,7 @@ function stopAnimation() {
         });
 
         searchInput.value = "";
-      }, 10000)
+      }, 60000)
     );
 
     resetTimeoutFunc(resetTimeout);

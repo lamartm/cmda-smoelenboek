@@ -9,6 +9,11 @@ const teacher = document.querySelectorAll(".teacher");
 const teachers = document.querySelector(".teachers");
 const searchInput = document.getElementById("search-input");
 
+let holdState;
+let holdStateTwo;
+let holdStateThree;
+let holdStateFour;
+
 const filtered3 = document.getElementById("filterSelect3");
 
 const upButton = document.getElementById("upButton");
@@ -19,13 +24,13 @@ const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
 // NAVIGATIE ZOEKEN
 
-document.addEventListener(
-  "contextmenu",
-  function (e) {
-    e.preventDefault();
-  },
-  false
-);
+// document.addEventListener(
+//   "contextmenu",
+//   function (e) {
+//     e.preventDefault();
+//   },
+//   false
+// );
 
 searchInput.addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
@@ -47,9 +52,6 @@ downButton.addEventListener("click", (element) => {
     behavior: "smooth",
   });
 });
-
-let holdState;
-let holdStateFour;
 
 downButton.addEventListener("mousedown", (element) => {
   holdState = setInterval(() => {
@@ -76,9 +78,6 @@ downButton.addEventListener("touchstart", (element) => {
 downButton.addEventListener("touchend", (element) => {
   clearInterval(holdStateFour);
 });
-
-let holdStateTwo;
-let holdStateThree;
 
 upButton.addEventListener("mousedown", (element) => {
   holdStateTwo = setInterval(() => {
@@ -248,12 +247,4 @@ function confettiNone() {
     document.getElementById("confetti-wrapper").style.display = "none";
     setTimeout(confetti, 60000);
   });
-}
-
-// ANIMATIE RANDOM
-
-function GetValue() {
-  var myarray = new Array("item1", "item2", "item3");
-  var random = myarray[Math.floor(Math.random() * myarray.length)];
-  document.getElementById("light").innerHTML = random;
 }
