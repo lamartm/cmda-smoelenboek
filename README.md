@@ -194,7 +194,7 @@ Deze userstory heeft wat haken en ogen voor dit online smoelenboek. De docent ka
 
 Verder zijn er voor het CMD Smoelenboek tijdens het proces verschillende designkeuzes gemaakt. <br/>
 <b> - Scrollbutton </b> <br/>
-Bij de eerste iteratie ontstond al het idee om twee scrollbuttons voor omlaag en omhaag te plaatsen onderaan de pagina. Op deze manier kunnen mensen die niet goed hoog bij het scherm kunnen komen alsnog bij de docenten komen. Om ook bij docenten op de bovenste rij te komen is er in een latere iteratie een lege ruimte geplaatst boven de inhoud om het verder naar beneden te kunnen scrollen. Ter inspiratie van het split screen op een Apple telefoon. Op deze manier is het voor meer mensen gebruiksvriendelijker. 
+Bij de eerste iteratie ontstond al het idee om twee scrollbuttons voor omlaag en omhaag te plaatsen onderaan de pagina. Op deze manier kunnen mensen die niet goed hoog bij het scherm kunnen komen alsnog bij de docenten komen. Dit vergroot de gebruiksvriendelijkheid voor het ontwerp.
 
 <b> - Groepering filters </b> <br/>
 Het begonn met meerdere filters in de footer van het scherm. Dit week uit van links tot een filter rechts. Tijdens het testen was al snel opgemerkt dat alle filters te ver uit elkaar stonden waardoor niet overzichtelijk was dat manieren waren van zoeken. Later is er hier een speciaal menu voor gemaakt om de gebruiksvriendelijkheid te vergroten. Het is hierdoor duidelijker dat onder één knop meerdere filters staan en hierdoor op verschillende manieren gezocht naar docenten kan worden. Daarbij geeft dit minder chaos op het scherm. 
@@ -212,16 +212,22 @@ De filter met specifieke vakgebieden is gebouwd vanwege cases als 'ik heb als st
 Doordat in eerste instantie de filters en de navigatie op verschillende plekken onderaan de pagina stonden, bleek uit een test dat de gebruiker heen en weer moest lopen om het smoelenboek te gebruiken. Aangezien dit niet gebruiksvriendelijk is, is er de keuze gemaakt alle navigatie aan de linkerkant te plaatsen. 
 
 <b> - Usability ruimte </b> <br/>
-
+Om ook bij docenten op de bovenste rij te komen tijdens het scrollen is er in een latere iteratie een lege ruimte geplaatst boven de inhoud om het verder naar beneden te kunnen scrollen. Ter inspiratie van het split screen op een Apple telefoon. Op deze manier is het voor meer mensen gebruiksvriendelijker. 
 
 <b> - Flip </b> <br/>
+Aangezien er met het andere prototype van het andere groepje er teveel overeenkomsten ontstonden, is er een besluit gemaakt om twee verschillende weergaves te maken. Hun hadden de catalogusview en dit prototype kreeg alle docenten op één scherm. Om het interactiever te maken, ontstond het idee om een flipanimatie te maken. Op de achterkant van de kaart staat de basic informatie van de docent en als je meer over die persoon te weten wilt komen, kan er gedrukt worden op de button om naar de detailpage te gaan. 
 
 <b> - Automatische datum met legenda </b> <br/>
+Al snel was het idee om afwezige docenten een grijze achtergrond te geven. Bij meerdere testen kwam naar voren dat dit soms nog niet helemaal duidelijk was. Hierdoor is als eerste een datum toegevoegd die automatisch veranderd naar een volgende dag. Samen met de legenda moet dit de gebruiker meer duidelijkheid geven bij het gebruik. 
 
 <b> - Animaties </b> <br/>
+Aangezien een display flex al snel boring kan overkomen voor studenten en docenten van de opleiding CMD, zijn er meerdere animaties toegevoegd om de gebruiker te lokken om het te gebruiken. Op de homepage is er bijvoorbeeld confetti en een wave toegevoegd en op de detailpage een easteregg. Ga zelf maar zoeken!
 
-<b> - detail </b> <br/>
-<b> - data </b> <br/>
+<b> - Detailpage </b> <br/>
+Op de achterkant van de flip is de basic informatie al te vinden. Als je alleen een docent nodig hebt om informatie als beschikbaarheid te vinden, dan heb je hieraan al voldoende. Op de detailpage staat namelijk meer informatie over de docent om interessante connecties te kunnen leggen met elkaar zoals beschreven bij de userstory. 
+
+<b> - Data </b> <br/>
+In eerste week kregen we een workshop aangeboden over headless CMS. Hierbij werd Prismic sterk aangeraden. Omdat dit voor alle opdrachtnemers van het CMDA Smoelenboek nieuw was, is dit in eerste instantie gebruikt. Dit bleek een vliegende start te zijn voor het prototype. Later in het proces kwamen er toch wat obstakels zoals bij de userstory om meerdere accounts te krijgen voor het inloggen. Dit kost geld bij Prismic. Ook wilde de opdrachtgever graag het rooster gekoppeld aan de docent. Doordat het invoegen van een csv-bestand bij dit account niet mogelijk is, is dit voor nu aan de kant geschoven. Er is overwogen om over te stappen naar een ander headless CMS-systeem, maar in overleg met de opdrachtgever is toch besloten om de focus meer te leggen op de interface. 
 
 ### Uitleg code 
 #### Home page layout
