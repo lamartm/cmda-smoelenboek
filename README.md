@@ -192,19 +192,31 @@ Elke docent heeft zijn eigen detailpage waar diegene meer over zichzelf kan neer
 Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op honderd verschillende plekken hoef te doen. <br/>
 Deze userstory heeft wat haken en ogen voor dit online smoelenboek. De docent kan eenvoudig via een gezamelijk account zijn gegevens invullen. Dit wordt elk jaar tijdens de meeting bij de start van het nieuwe schooljaar opnieuw bijgewerkt. Alleen het "gevaarlijke" eraan is dat het een gezamelijk account is. Hierdoor kunnen docenten elkaars gegevens invullen of zelfs door studenten gehacked kunnen worden. Voor nu is er in overleg met de opdrachtgever besloten om dit zo te laten. Dit zou in de toekomst verder uitgezocht moeten worden, aangezien meerdere accounts bij Prismic geld kost. 
 
-Verder zijn er voor het CMD Smoelenboek tijdens het proces verschillende designkeuzes gemaakt. 
-<b> Scroll button </b>
-- filters groepering 
-- navigatie links 
-- usability space 
-- AZ filter
-- Zoek filter
-- Vakgebied filter  
-- Flip 
-- Automatische datum met legenda
-- Animaties 
-- detail
-- data 
+Verder zijn er voor het CMD Smoelenboek tijdens het proces verschillende designkeuzes gemaakt. <br/>
+<b> - Scroll button </b> <br/>
+
+<b> - Groepering filters </b> <br/>
+
+<b> - A t/m Z filter </b> <br/>
+
+<b> - Zoek filter </b> <br/>
+
+<b> - Vakgebied filter </b> <br/>
+
+<b> - Navigatie </b> <br/>
+links
+
+<b> - Usability ruimte </b> <br/>
+
+
+<b> - Flip </b> <br/>
+
+<b> - Automatische datum met legenda </b> <br/>
+
+<b> - Animaties </b> <br/>
+
+<b> - detail </b> <br/>
+<b> - data </b> <br/>
 
 ### Uitleg code 
 #### Home page layout
