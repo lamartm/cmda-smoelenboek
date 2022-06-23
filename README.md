@@ -184,11 +184,11 @@ Er is een online en interactief smoelenboek gemaakt waarop alle docenten in éé
 Als student, wil ik snel een naam bij een gezicht kunnen vinden, zodat ik weet hoe mijn docent er uitziet/ook al weer heet. <br/>
 Er is een filtermenu aangemaakt met drie manieren van filteren: via de zoekbalk voor specifieke namen, via de a t/m z voor een specifieke letter in een naam en via vakgebied om op specialisatie te kunnen zoeken. Doordat er verschillende filters zijn, kan dit voor meerdere cases gebruikt worden. 
 
-2 Connectie met docent maken <br/>
+2. Connectie met docent maken <br/>
 Als docent, wil ik snel meer weten over collega’s, zodat ik interessantere connecties weet te leggen. <br/>
 Elke docent heeft zijn eigen detailpage waar diegene meer over zichzelf kan neerzetten om nieuwe connecties te leggen. Via de button op de achterkant van het flipkaartje van die docent kom je op de detailpage. 
 
-3 Profiel kunnen wijzigen <br/>
+3. Profiel kunnen wijzigen <br/>
 Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op honderd verschillende plekken hoef te doen. <br/>
 Deze userstory heeft wat haken en ogen voor dit online smoelenboek. De docent kan eenvoudig via een gezamelijk account zijn gegevens invullen. Dit wordt elk jaar tijdens de meeting bij de start van het nieuwe schooljaar opnieuw bijgewerkt. Alleen het "gevaarlijke" eraan is dat het een gezamelijk account is. Hierdoor kunnen docenten elkaars gegevens invullen of zelfs door studenten gehacked kunnen worden. Voor nu is er in overleg met de opdrachtgever besloten om dit zo te laten. Dit zou in de toekomst verder uitgezocht moeten worden, aangezien meerdere accounts bij Prismic geld kost. 
 
