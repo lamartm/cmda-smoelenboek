@@ -28,6 +28,7 @@ https://user-images.githubusercontent.com/99180082/175385281-e35c74d1-84c3-4b8f-
  
 <details>
 <summary>Zoekfunctie A t/m Z</summary>
+ 
 https://user-images.githubusercontent.com/99180082/175385292-ae5564ba-f47b-4048-9baa-ed0aac3830e7.mov
 
 </details>
@@ -45,10 +46,10 @@ Het CMD Smoelenboek is, zoals de naam al zegt, een online smoelenboek. Waar tot 
 1. Docent opzoeken <br/>
 Als student, wil ik snel een naam bij een gezicht kunnen vinden, zodat ik weet hoe mijn docent er uitziet/ook al weer heet.
 
-2 Connectie met docent maken <br/>
+2. Connectie met docent maken <br/>
 Als docent, wil ik snel meer weten over collega’s, zodat ik interessantere connecties weet te leggen.
 
-3 Profiel kunnen wijzigen <br/>
+3. Profiel kunnen wijzigen <br/>
 Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op honderd verschillende plekken hoef te doen.
 
 Voor het ophalen van data wordt gebruik gemaakt van een headless CMS-systeem genaamd Prismic:
