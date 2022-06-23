@@ -180,10 +180,20 @@ Vasilis van Gemert wilt voor CMD Amsterdam een online smoelenboek met de mogelij
 ### Oplossing 
 Er is een online en interactief smoelenboek gemaakt waarop alle docenten in één oogopslag te zien zijn. Dit smoelenboek is te zien op één groot touchscreen scherm op de derde verdieping in de medialounge. Via een headless CMS-systeem is er data aangemaakt waarin docenten meer informatie over zichzelf kunnen delen. Dit wordt weergegeven op de detailpage van die specifieke docent. Via deze weg zijn er mogelijkheden om nieuwe connecties te maken. Daarbij zijn er verschillende filters: zoekbalk, a t/m z en vakgebied, waarop studenten kunnen zoeken om snel een naam bij een gezicht te kunnen vinden. Kijkende naar de userstory's:
 
+1. Docent opzoeken <br/>
+Als student, wil ik snel een naam bij een gezicht kunnen vinden, zodat ik weet hoe mijn docent er uitziet/ook al weer heet. <br/>
+Er is een filtermenu aangemaakt met drie manieren van filteren: via de zoekbalk voor specifieke namen, via de a t/m z voor een specifieke letter in een naam en via vakgebied om op specialisatie te kunnen zoeken. Doordat er verschillende filters zijn, kan dit voor meerdere cases gebruikt worden. 
 
+2 Connectie met docent maken <br/>
+Als docent, wil ik snel meer weten over collega’s, zodat ik interessantere connecties weet te leggen. <br/>
+Elke docent heeft zijn eigen detailpage waar diegene meer over zichzelf kan neerzetten om nieuwe connecties te leggen. Via de button op de achterkant van het flipkaartje van die docent kom je op de detailpage. 
 
-Design keuzes:
-- scroll button
+3 Profiel kunnen wijzigen <br/>
+Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op honderd verschillende plekken hoef te doen. <br/>
+Deze userstory heeft wat haken en ogen voor dit online smoelenboek. De docent kan eenvoudig via een gezamelijk account zijn gegevens invullen. Dit wordt elk jaar tijdens de meeting bij de start van het nieuwe schooljaar opnieuw bijgewerkt. Alleen het "gevaarlijke" eraan is dat het een gezamelijk account is. Hierdoor kunnen docenten elkaars gegevens invullen of zelfs door studenten gehacked kunnen worden. Voor nu is er in overleg met de opdrachtgever besloten om dit zo te laten. Dit zou in de toekomst verder uitgezocht moeten worden, aangezien meerdere accounts bij Prismic geld kost. 
+
+Verder zijn er voor het CMD Smoelenboek tijdens het proces verschillende designkeuzes gemaakt. 
+<b> Scroll button </b>
 - filters groepering 
 - navigatie links 
 - usability space 
