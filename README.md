@@ -195,7 +195,392 @@ Design keuzes:
 - data 
 
 ### Uitleg code 
-Mo
+#### Home page layout
+De homepage layout werkt door data op te halen die we krijgen van de Prismic CMS. Alle data hier kan je gelijk gebruiken, alleen de dagen waren wat lastig. Je krijgt namelijk een object met alle dagen van de week en als property value hiervan true of false (wat aangeeft of de docent op die dag beschikbaar is). Om dit naar een string om te zetten zodat ik dit kan gebruiken heb ik het volgende gedaan:
+
+```javascript
+<% const {teacherpic, teachername, vakken, beschrijving, hobbies, beschikbaarheid, email, specialiteiten} = teacher.data %>
+<% const dagen = Object.keys(beschikbaarheid[0]).reduce((currentResult, key) => {
+    beschikbaarheid[0][key] === true && (currentResult[key] = beschikbaarheid[0][key]);
+
+    return currentResult;
+}, {}); %> 
+
+<% const dagenArray = Object.keys(dagen) %> 
+<% const dagenCapital = dagenArray.map(d => d.charAt(0).toUpperCase() + d.substr(1)) %>
+<% const dagenString = dagenCapital.join(', '); %>
+```
+Uit het eerste object (beschikbaarheid[0] check naar alle dagen die "true" als value hebben, zo ja worden die returned. Van dit dagen object maak ik een array (dagenArray) en hiervan ga ik er weer doorheen om elke dag een hoofdletter te geven (dagenCapital). Als laatst voeg ik elke element binnen de array samen door ze toe te voegen met join() (dagenString). Hierdoor kreeg ik de dagen string die ik nodig had.
+
+De content bepaal ik door te kijken of de dag van vandaag (die ik ophaal van de server) een false value heeft binnen de docent data die ik momenteel gebruik binnen de forEach:
+```javascript
+<% if(beschikbaarheid[0][currentDate] === false) { %> 
+```
+Zo ja laat ik de docenten zien die er niet zijn met een grijs kleur op de "article" en "img":
+
+```html
+<article class="teacher bck-grey">
+  <div class="card__face card__face--front">
+    <img src="<%- teacherpic.url %>" class="pic-size unavailable"/>
+    <h1 class="teacher-name"><%- teachername.length == 0 ? "None" : teachername[0].text %></h1>
+   </div>
+
+   <div class="card__face card__face--back">
+    <h1 class="teacher-name"><%- dagenString === "" ? "None" : `Beschikbaar op: ${dagenString}` %></h1>
+    <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+   </div>
+</article>
+```
+Zo niet laat ik de docenten zien die beschikbaar zijn. Dit is in principe dezelfde stukje code die je hierboven ziet, alleen zonder de grey classes.
+
+De encodedURL variabel die je hierboven ook zit is een variabel waarin ik een link maar naar een detail page van de docent in kwestie. Ik gebruik dan de docenten naam die is opgegeven binnen deze string. Dit doe ik ook zodat ik in mijn server kan kijken naar deze string wanneer de gebruiker een connectie met de detail pagina van de docent probeert te maken. Hierdoor weet ik welke docent het is, en kan ik een request naar prismic maken om deze data te krijgen:
+
+```javascript
+<% const encodedURL = "/detail/" + (teachername.length == 0 ? "" : teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+```
+
+#### Boven en beneden buttons
+Om ervoor te zorgen dat wanneer de gebruiker op een van de buttons klikt dat de pagina naar boven of beneden gaat, hebben we de volgende functie toegevoegd. Dit zorgt ervoor dat de pagina met een x aantal pixels naar boven of naar beneden gaat. :
+```javascript
+downButton.addEventListener("click", (element) => {
+  document.querySelector("html").scrollBy({
+    top: 180,
+    behavior: "smooth",
+  });
+});
+```
+
+#### Filters
+Alle filters heb ik in een partial opgeslagen. We hebben in totaal drie filters gebruikt. Een filter waarin je kan typen voor de docent die je zoekt. Een filter om alfabetisch te zoeken naar een docent, en een filter waarop je naar docenten kan zoeken met een bepaalde specialiteit. Voor elk van deze filters heb ik aparte filter classes gemaakt die allemaal display: none; tonen. Dit deed ik zodat ik meerdere filters tegelijk actief kon krijgen.
+
+##### Alfabetische filter
+Voor de alfabetische filter heb ik een array gemaakt waarin de alfabet zit:
+ ```javascript
+ const alphabet = 
+["A", "B", "C", "D", "E", "F", "G",
+"H", "I", "J", "K", "L", "M", "N",
+"O", "P", "Q", "R", "S", "T", "U",
+"V", "W", "X", "Y", "Z" ];
+```
+Ik loop door deze array heen en voor elk letter maak ik een input element aan:
+ 
+```javascript
+alphabet.forEach((letter) => {
+  const addInput = alphabetField.appendChild(newInput.cloneNode(true));
+  const addLabel = alphabetField.appendChild(newLabel.cloneNode(true));
+
+  addLabel.setAttribute("class", "letterLabel");
+  addLabel.setAttribute("for", letter);
+  addLabel.textContent = letter;
+
+  addInput.setAttribute("class", "letterInput");
+  addInput.setAttribute("type", "radio");
+  addInput.setAttribute("id", letter);
+  addInput.setAttribute("name", "alphabet");
+  addInput.setAttribute("value", letter);
+});
+```
+ 
+Als je op een van deze inputs klikt, vuur ik een functie af. Binnen deze functie check ik eerst of de gebruiker op de "All" input heeft geklikt. Zo ja, haal ik van elk element de filterAlphabet class af. Zo niet, pak ik de naam van elk element en check ik of de voor- of achternaam overeenkomt met de letter die geselecteerd is. Als dit klopt haal ik hiervan de filterAlphabet class weg, zo niet voeg ik die toe:
+
+```javascript 
+function filterOnAlphabet(d) {
+  if (d.target.value === "All") {
+    filtered.style.display = "none";
+    Array.from(specialtyTeacher).forEach((element) => {
+      element.classList.remove("filterAlphabet");
+    });
+  } else {
+    filtered.style.display = "initial";
+    Array.from(specialtyTeacher).forEach((element) => {
+      const names = element.innerText.trim().toLowerCase().split(" ");
+      if (
+        names[0].startsWith(d.target.value.toLowerCase()) ||
+        names[1].startsWith(d.target.value.toLowerCase())
+      ) {
+        element.classList.remove("filterAlphabet");
+      } else {
+        element.classList.add("filterAlphabet");
+      }
+    });
+  }
+
+  checkForSelectedFilters();
+}
+```
+##### Specialiteit filter
+Voor de specialiteit filter heb ik een functie die checkt welke specialiteit is gekozen. Eerst haal ik van alle checkboxes binnen de specialiteit filter de checkboxes die geselecteerd zijn. De namen van deze checkboxes (wat dus de specialiteiten zijn) stop ik in de array specialties. Als specialties leeg is, wat betekent dat de gebruiker niks heeft gekozen, dan haal ik de filterSpecialty weg van alle elementen. Zo niet, dan check ik voor elke element of ze de specialiteiten die gekozen zijn bevatten binnen hun "data-value" attribute. Als dit het geval is haal ik de filterSpecialty class weg, zodat je alleen de elementen kan zien die overeenkomen met de gekozen specialiteiten.
+
+```javascript
+const filterOnSpecialty = (e) => {
+  const checkedBoxes = document.querySelectorAll(
+    "input[name=specialty]:checked"
+  );
+
+  let specialties = [];
+
+  checkedBoxes.length === 0
+    ? (filtered3.style.display = "none")
+    : (filtered3.style.display = "initial");
+
+  checkForSelectedFilters();
+
+  checkedBoxes.forEach((d) => {
+    specialties.push(d.value.toLowerCase());
+  });
+
+  specialties.length === 0
+    ? specialtyTeacher.forEach((specialty) => {
+        specialty.classList.remove("filterSpecialty");
+      })
+    : specialtyTeacher.forEach((specialty) => {
+        specialties.some((d) =>
+          specialty.getAttribute("data-value").includes(d)
+        )
+          ? specialty.classList.remove("filterSpecialty")
+          : specialty.classList.add("filterSpecialty");
+      });
+};
+
+checkBoxes.forEach((d) => {
+  d.addEventListener("click", filterOnSpecialty);
+});
+```
+##### Zoek filter
+Voor de zoek filter maak ik gebruik van een script genaamd simple-keyboard. Hierdoor kon ik een on screen keyboard toevoegen, waardoor mensen met een touchscreen de site kunnen gebruiken. Ik toon de keyboard alleen wanneer de gebruiker de zoek filter geselecteerd heeft, en laat het verdwijnen wanneer ze ervan weg klikken:
+
+```javascript
+searchInput.addEventListener("click", (d) => {
+  keyboardBackground.style.display = "initial";
+  keyboardSimple.style.display = "initial";
+});
+
+keyboardBackground.addEventListener("click", (d) => {
+  keyboardBackground.style.display = "none";
+  keyboardSimple.style.display = "none";
+});
+
+document.getElementById("search-teacher").addEventListener("submit", (d) => {
+  d.preventDefault();
+  keyboardBackground.style.display = "none";
+  keyboardSimple.style.display = "none";
+});
+```
+Buiten dit heb ik ook een andere script gebruikt gemaakt mark.js. Hierdoor kan ik live wanneer de gebruiker zit te typen de letters markeren van de gefilterde elementen die overeenkomen met wat de gebruiker heeft getypt:
+```javascript
+function performMark() {
+  let keyword = searchInput.value;
+
+  markInstance.unmark({
+    done: function () {
+      markInstance.mark(keyword);
+    },
+  });
+}
+```
+Wanneer de gebruiker typt loop ik door elke element heen en check ik of het ergens de woorden heeft die de gebruiker heeft getypt. Wanneer dit het geval is, laat ik alleen de elementen zien die hiermee overeenkomen, en markeer ik de gedeeltes binnen die elementen die getypt zijn door de gebruiker:
+
+```javascript
+function onChange(input) {
+  document.querySelector(".input").value = input;
+  input === ""
+    ? (filtered1.style.display = "none")
+    : (filtered1.style.display = "initial");
+
+  checkForSelectedFilters();
+  performMark();
+
+  Array.from(specialtyTeacher).forEach((element) => {
+    if (element.innerText.toLowerCase().includes(input.toLowerCase())) {
+      element.classList.remove("filterText");
+    } else {
+      element.classList.add("filterText");
+    }
+  });
+}
+```
+
+#### Animaties
+##### Filters
+Er zijn een aantal animaties voor wanneer de gebruiker op een button klikt, voornamelijk de filters. Wat we in principe doen is elke keer wanneer de gebruiker op een van de filters klikt, checken naar welke value de animation property heeft. Als het geen animation property heeft of een animation property waarin er een animatie is dat het element buiten het beeld zet, dan voegen we een animatie toe die het element toont. 
+
+```javascript
+filterButton.style.animation =
+    filterStyles.getPropertyValue("animation") ===
+      "0s ease 0s 1 normal none running none" ||
+    filterStyles.getPropertyValue("animation") === removeElement("FilterButton")
+      ? showElement("FilterButton")
+      : removeElement("FilterButton");
+```
+Je ziet hier dat we een functie terug geven. Deze functie returned een string met daarin de animatie naar keus:
+
+```javascript
+const showElement = (element) => {
+  return `1s ease-in-out 0s 1 normal forwards running show${element}ToScreen`;
+};
+
+const removeElement = (element) => {
+  return `1s ease-in-out 0s 1 normal none running remove${element}FromScreen`;
+};
+```
+
+De code was hiervoor best lang en niet erg duidelijk, dus ik had het korter gemaakt door van de strings een functie te maken.
+
+Om ervoor te zorgen dat wanneer een gebruiker een andere filter klikt dat de elementen van deze filters niet boven elkaar komen, check ik of de andere filters getoond worden door een animation, zo ja animeer ik ze weg van het scherm:
+
+```javascript
+if (
+    alphabetField.style.animation === showElement("Alphabet") &&
+    searchInput.style.animation === showElement("Search")
+  ) {
+    searchInput.style.animation = removeElement("Search");
+  }
+
+  if (
+    alphabetField.style.animation === showElement("Alphabet") &&
+    specialties.style.animation === showElement("Specialties")
+  ) {
+    specialties.style.animation = removeElement("Specialties");
+  }
+```
+
+##### Easter egg
+Wanneer je op de detail page zit kan je op de naam van de docent 3x klikken waardoor je een animatie triggered. We regelde de animatie hier binnnen Javascript door de .animate() method te gebruiken die JS heeft.
+
+Hier zijn de animaties zelf en de timing functions die erbij horen om de animaties te laten werken. Ook zie je nog een count variabel, deze wordt gebruikt om te berekenen hoe vaak de gebruiker heeft geklikt:
+```javascript
+let count = 0;
+
+const extraImgMoving = [
+  { right: "0%", top: "7%", opacity: "0%" },
+  { right: "-27%", top: "-6%", opacity: "100%" },
+];
+
+const extraImg2Moving = [
+  { right: "0%", top: "7%", opacity: "0%" },
+  { right: "-27%", top: "25%", opacity: "100%" },
+];
+
+const extraImgTiming = {
+  duration: 800,
+  iterations: 1,
+  fill: "forwards",
+};
+
+const titleShaking = [
+  { transform: "rotate(-5deg)" },
+  { transform: "rotate(5deg)" },
+  { transform: "rotate(-5deg)" },
+  { transform: "rotate(0deg)" },
+];
+
+const titleTiming = {
+  duration: 800,
+  iterations: 1,
+};
+```
+Wanneer de gebruiker op de naam klikt, animeer ik de naam door het te laten shaken en de count met + 1 te veranderen. Wanneer de count gelijk is aan 3 animeerik de easter egg:
+
+```javascript
+teacherName.addEventListener("click", () => {
+  count++;
+  teacherName.animate(titleShaking, titleTiming);
+
+  if (count === 3) {
+    imgAnimation.animate(extraImgMoving, extraImgTiming);
+    imgAnimation2.animate(extraImg2Moving, extraImgTiming);
+  }
+});
+```
+#### Idle
+Wanneer de gebruiker niet interacteert met het scherm, moeten we ervoor zorgen dat geselecteerde filter weggaan en wouden we ook een idle animation toevoegen.
+Ik doe dit door middel van timeouts te zetten op de pagina die een functie runt na x aantal seconden. Deze timeouts sla ik op in een array (resetTimeout en clearFilters). Buiten dit heb ik ook een variabel die aangeeft of er gescrolled is (scrolled) en een variabel waarin ik de animations delay opsla (count):
+```javascript
+let resetTimeout = [];
+let clearFilters = [];
+
+let count = 0;
+let scrolled = true;
+```
+Wanneer er gescrolled of geklikt wordt runt de stopAnimation functie. Binnen deze functie check ik eerst of scrolled  gelijk is aan true. Als dit waar is dan clear ik alle setTimeouts binnen de resetTimeout en clearFilters array. Hierna push ik een timeout om alle filters te clearen. Deze timeout moet na een minuut de functie runnen. Vervolgens push ik in de resetTimeout array meerdere timeouts die voor elke docent element moet runnen. Binnen deze timeouts voeg ik een animatie toe die het element laat bewegen. Om ervoor te zorgen dat er een wave achtige animatie komt, zorg ik ervoor dat er voor elke opeenvolgende element +500 komt in de count variabel. Deze count variabel is namelijk de animation delay die wordt toegevoegd. Elke keer als de functie runt verander ik de count variabel naar 0. Als laatst zorg ik ervoor dat de stopAnimation functie om de 5 seconden wordt gerunned, door de scrolled variabel naar true te zetten met een setTimeout van 5 seconden. Ik doe dit omdat de scroll event op een pagina heel erg vaak wordt gerunned. Door een timeout van 5 seconden te zetten, voer ik de functie alleen om de 5 seconden uit:
+
+```javascript
+
+window.addEventListener("scroll", stopAnimation);
+document.body.addEventListener("mousedown", stopAnimation);
+window.addEventListener("load", stopAnimation);
+
+function stopAnimation() {
+  if (scrolled === true) {
+    scrolled = false;
+    count = 0;
+
+    resetTimeoutFunc(clearFilters);
+    clearFilters.push(
+      setTimeout(() => {
+        all.checked = true;
+        filtered1.style.display = "none";
+        filtered2.style.display = "none";
+        filtered3.style.display = "none";
+        filtered4.style.display = "none";
+
+        Array.from(checkBoxes).forEach((element) => {
+          element.checked = false;
+        });
+
+        Array.from(specialtyTeacher).forEach((element) => {
+          element.classList.remove("filterAlphabet");
+          element.classList.remove("filterSpecialty");
+        });
+
+        searchInput.value = "";
+      }, 10000)
+    );
+
+    resetTimeoutFunc(resetTimeout);
+    adjustAnimations();
+
+    function adjustAnimations() {
+      Array.from(specialtyTeacher).forEach((element, index) => {
+        element.style.animation = "none";
+
+        resetTimeout.push(
+          setTimeout(() => {
+            count += 200;
+            element.style.animation = `8.8s linear ${count}ms infinite alternate alternateWave`;
+          }, 60000)
+        );
+      });
+    }
+
+    setTimeout(() => {
+      scrolled = true;
+    }, 5000);
+
+    function resetTimeoutFunc(d) {
+      d.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
+    }
+  }
+}
+```
+We hebben er ook voor gezorgd dat als er geen interactie is op de detail pagina na een minuut, je terug gestuurd wordt naar de homepage:
+```javascript
+function redirect() {
+  window.location.href = "/";
+}
+var initial = setTimeout(redirect, 60000);
+document.addEventListener("click", test);
+window.addEventListener("scroll", test);
+
+function test(event) {
+  clearTimeout(initial);
+  initial = setTimeout(redirect, 60000);
+}
+```
+
+
 
 ### Overdracht 
 Hoe installeren/klaarzetten 
