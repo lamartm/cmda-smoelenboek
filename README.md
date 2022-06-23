@@ -193,9 +193,11 @@ Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op 
 Deze userstory heeft wat haken en ogen voor dit online smoelenboek. De docent kan eenvoudig via een gezamelijk account zijn gegevens invullen. Dit wordt elk jaar tijdens de meeting bij de start van het nieuwe schooljaar opnieuw bijgewerkt. Alleen het "gevaarlijke" eraan is dat het een gezamelijk account is. Hierdoor kunnen docenten elkaars gegevens invullen of zelfs door studenten gehacked kunnen worden. Voor nu is er in overleg met de opdrachtgever besloten om dit zo te laten. Dit zou in de toekomst verder uitgezocht moeten worden, aangezien meerdere accounts bij Prismic geld kost. 
 
 Verder zijn er voor het CMD Smoelenboek tijdens het proces verschillende designkeuzes gemaakt. <br/>
-<b> - Scroll button </b> <br/>
+<b> - Scrollbutton </b> <br/>
+Bij de eerste iteratie ontstond al het idee om twee scrollbuttons voor omlaag en omhaag te plaatsen onderaan de pagina. Op deze manier kunnen mensen die niet goed hoog bij het scherm kunnen komen alsnog bij de docenten komen. Om ook bij docenten op de bovenste rij te komen is er in een latere iteratie een lege ruimte geplaatst boven de inhoud om het verder naar beneden te kunnen scrollen. Ter inspiratie van het split screen op een Apple telefoon. Op deze manier is het voor meer mensen gebruiksvriendelijker. 
 
 <b> - Groepering filters </b> <br/>
+Het begonn met meerdere filters in de footer van het scherm. Dit week uit van links tot een filter rechts. Tijdens het testen was al snel opgemerkt dat alle filters te ver uit elkaar stonden waardoor niet overzichtelijk was dat manieren waren van zoeken. Later is er hier een speciaal menu voor gemaakt om de gebruiksvriendelijkheid te vergroten. Het is hierdoor duidelijker dat onder één knop meerdere filters staan en hierdoor op verschillende manieren gezocht naar docenten kan worden. Daarbij geeft dit minder chaos op het scherm. 
 
 <b> - A t/m Z filter </b> <br/>
 
