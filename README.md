@@ -588,21 +588,27 @@ Je kan het project installeren door het volgende te doen: [Installeren](#install
 Wanneer je het project op je systeem naar keuze hebt staan, en vervolgens de data wilt veranderen om een docent toe te voegen of aanpassingen te maken, moet je eerst inloggen via https://prismic.io/dashboard/login
 
 Zodra je in de repository zit kan je linksaan op "Documents" om naar alle ingevulde docenten te kijken, of een toe te voegen:
+
 ![image](https://user-images.githubusercontent.com/55801193/175422960-8da452d3-4f96-481b-938c-f920e7897fba.png)
 
 Zodra je hier bent krijg je het volgende scherm te zien:
+
 ![image](https://user-images.githubusercontent.com/55801193/175423026-d1573055-523c-4331-ad44-478b96afe1a1.png)
 
 Hier kan je of op een van de ingevulde docenten klikken en de data hierin veranderen, of een nieuwe profiel toevoegen door rechtsboven op "Create new" te klikken:
+
 ![image](https://user-images.githubusercontent.com/55801193/175423147-67e9caca-a5b1-44ff-a380-1240e225265f.png)
 
 Het aanpassen en toevoegen van een docent werkt in principe hetzelfde, je kan de beschikbare velden invullen/aanpassen en zodra je klaar bent moet je rechts boven op "Save" klikken:
+
 ![image](https://user-images.githubusercontent.com/55801193/175423333-aa347157-3698-4bbd-bab5-976c883f6429.png)
 
 Dan op "Publish" klikken:
+
 ![image](https://user-images.githubusercontent.com/55801193/175423396-8bf84597-849c-463f-ac83-151ff0cc2dd6.png)
 
 Hier krijg je dan een side menu waarin je het gelijk kan publishen, of op een latere datum:
+
 ![image](https://user-images.githubusercontent.com/55801193/175423469-87b67845-e218-4d33-b20d-6ec548c56905.png)
 
 Zodra je dit hebt gedaan weet je nu hoe je een profiel kan toevoegen of aanpassen.
