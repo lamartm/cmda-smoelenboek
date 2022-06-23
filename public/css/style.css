@@ -1,5 +1,11 @@
+html {
+  height: auto;
+  overflow: auto;
+}
+
 
 body {
+  height: auto;
   background-color: #f8bd19;
   font-family: "Poppins", sans-serif;
 }
@@ -281,6 +287,7 @@ margin-right: 3px;
 }
 
 .teachers {
+  scroll-margin-top: 60px;
   position: relative;
   width: 90%;
   margin: 0em auto;

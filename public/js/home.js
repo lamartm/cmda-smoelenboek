@@ -6,6 +6,7 @@ import { checkForSelectedFilters } from "./checkFilteredOptions.js";
 
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
 const teacher = document.querySelectorAll(".teacher");
+const teachers = document.querySelector(".teachers");
 const searchInput = document.getElementById("search-input");
 
 const filtered3 = document.getElementById("filterSelect3");
@@ -97,12 +98,7 @@ function performMark() {
 // SPLIT SCREEN
 
 if (window.location.pathname === "/") {
-  window.onload = () => {
-    window.scrollTo({
-      top: 640,
-      behavior: "smooth",
-    });
-  };
+  teachers.scrollIntoView({ behavior: "smooth" });
 }
 
 // AUTOMATISCHE DATUM
