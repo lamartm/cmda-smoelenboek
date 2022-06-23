@@ -78,6 +78,7 @@ Hieruit worden de, zelfgemaakte, volgende onderdelen opgehaald:
 * [Probleem definitie](#probleem-definitie)
 * [Oplossing](#oplossing)
 * [Uitleg code](#uitleg-code)
+* [Overdracht](#overdracht)
 * [Link wikis](#link-wikis)
 * [Gedaan en wenslijst](#gedaan-en-wenslijst)
 * [Licentie](#licentie)
@@ -211,8 +212,23 @@ De product biografie en reflectie op eigen niveau zijn individueel beschreven. H
 - [Mitzy](https://github.com/Mitzyyy/cmda-smoelenboek/wiki)
 
 ### Gedaan en wenslijst
-- [x] Homepagina maken <br/>
-- [x] De application installeren op een online web server (Heroku) <br/>
+- [x] Headless CMS systeem opzetten (Prismic) <br/>
+- [x] Data maken en ophalen <br/>
+- [x] Homepagina <br/>
+- [x] Detailpagina <br/>
+- [x] Scrollfunctie <br/>
+- [x] Ruimte toevoegen om bovenste rij naar onder te scrollen <br/>
+- [x] Automatische datum toevoegen <br/>
+- [x] Legenda maken <br/>
+- [x] Filtermenu <br/>
+- [x] Filteropties zoals zoekbalk of a t/m z <br/>
+- [x] Verschillende animaties toevoegen <br/>
+- [x] Installeren op een online web server (Heroku) <br/>
+- [ ] Visueel maken van beschikbaarheid <br/>
+- [ ] Focusstate aanpassen naar ronde vorm bij scrollen <br/>
+- [ ] Animatie eastereggs verschillende richtingen op laten gaan <br/>
+- [ ] Detailpage verder uitbreiden <br/>
+- [ ] Inlogsysteem verder uitbreiden <br/>
 
 ### Licentie
 [GNU GPLv3](LICENSE)
