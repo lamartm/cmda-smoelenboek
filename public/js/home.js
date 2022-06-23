@@ -98,7 +98,9 @@ function performMark() {
 // SPLIT SCREEN
 
 if (window.location.pathname === "/") {
-  teachers.scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => {
+    teachers.scrollIntoView({ behavior: "smooth" });
+  }, 300);
 }
 
 // AUTOMATISCHE DATUM
