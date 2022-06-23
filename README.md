@@ -129,8 +129,7 @@ Vasilis van Gemert wilt voor CMD Amsterdam een online smoelenboek met de mogelij
 ### Uitleg code 
 
 ### Overdracht 
-- Elementen verbergen voor mensen die niet kunnen zien: https://www.a11yproject.com/posts/how-to-hide-content/ 
-- Heading voor blinden
+
 
 ### Link naar wiki's
 [Mohamed](https://github.com/lamartm/cmda-smoelenboek/wiki)
