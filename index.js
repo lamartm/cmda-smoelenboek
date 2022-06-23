@@ -38,6 +38,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/detail/:id", async (req, res) => {
+  console.log(req.params.id);
   const document = await client.getByUID("teacher-card", req.params.id);
   res.render("detail", { document });
 });
