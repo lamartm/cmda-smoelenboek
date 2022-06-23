@@ -1,21 +1,71 @@
-## CMD Smoelenboek
-In de meesterproef, een module van de minor Web Design & Development, maken we in samenwerking met CMD Amsterdam een online smoelenboek. 
+## Meesterproef
+In deze module van de minor Web Design & Development maken we in samenwerking met CMD Amsterdam een online smoelenboek. 
 
 ### Voorkant
-tech
-vorm
-interactie
-projecten
-cultuur 
-staff medewerkers
+Homepagina <br/>
+<img width="810" alt="versie4" src="https://user-images.githubusercontent.com/99180082/175385225-50c1ab9c-deed-46ce-9de3-1d85023dcefa.png">
 
-agenda weergeven op detailpage gekoppeld aan roooster. extra feature
-bij datum ook andere informatie zoals activiteiten etc.
+<details>
+<summary>Homepagina + detailpagina</summary>
+ 
+https://user-images.githubusercontent.com/99180082/175385249-a7c78627-b01a-4a19-aa35-fd0520acc507.mov
 
-git merge main
+</details>
+
+<details>
+<summary>Scrollfunctie</summary>
+
+https://user-images.githubusercontent.com/99180082/175385271-8254c073-d96a-4504-b4b2-8e18bff147a3.mov 
+ 
+</details>
+
+<details>
+<summary>Zoekfunctie zoeken</summary>
+
+https://user-images.githubusercontent.com/99180082/175385281-e35c74d1-84c3-4b8f-b271-fd0bc25efc88.mov
+
+</details
+ 
+<details>
+<summary>Zoekfunctie A t/m Z</summary>
+https://user-images.githubusercontent.com/99180082/175385292-ae5564ba-f47b-4048-9baa-ed0aac3830e7.mov
+
+</details>
+
+<details>
+<summary>Zoekfunctie vakgebied</summary>
+
+https://user-images.githubusercontent.com/99180082/175385298-e7187509-5c20-420a-97f4-d5ab89a5be72.mov
+
+</details>
  
 ### Beschrijving
+Het CMD Smoelenboek is, zoals de naam al zegt, een online smoelenboek. Waar tot vorig jaar fysieke foto's hingen op de derde verdieping in de gang, is er nu een online application waar in één oogopslag alle docenten van CMD te vinden zijn. De application heeft als doel om docenten en studenten met elkaar te kunnen verbinden. In het CMD Smoelenboek is dit naar voren gekomen door middel van alle docenten weer te geven op één scherm en door middel van het klikken op een docent, meer informatie over die persoon te weten te komen. Bij de application zijn de volgende userstory's gebruikt: 
 
+1. Docent opzoeken <br/>
+Als student, wil ik snel een naam bij een gezicht kunnen vinden, zodat ik weet hoe mijn docent er uitziet/ook al weer heet.
+
+2 Connectie met docent maken <br/>
+Als docent, wil ik snel meer weten over collega’s, zodat ik interessantere connecties weet te leggen.
+
+3 Profiel kunnen wijzigen <br/>
+Als docent, wil ik eenvoudig mijn profiel kunnen wijzigen, zodat ik dat niet op honderd verschillende plekken hoef te doen.
+
+Voor het ophalen van data wordt gebruik gemaakt van een headless CMS-systeem genaamd Prismic:
+https://prismic.io/
+
+Hieruit worden de, zelfgemaakte, volgende onderdelen opgehaald:
+- uid;
+- teacherpic;
+- teachername;
+- email;
+- vakken;
+- beschrijving;
+- hobbies;
+- specialiteiten;
+- beschikbaarheid;
+- easteregg;
+- easteregg2.
 
 ### Link naar live demo 
 [CMD Smoelenboek](https://smoelenboek-cmd.herokuapp.com/)
@@ -27,6 +77,7 @@ git merge main
 * [Probleem definitie](#probleem-definitie)
 * [Oplossing](#oplossing)
 * [Uitleg code](#uitleg-code)
+* [Link wikis](#link-wikis)
 * [Gedaan en wenslijst](#gedaan-en-wenslijst)
 * [Licentie](#licentie)
 * [Bronnen](#bronnen)
@@ -51,10 +102,10 @@ http://localhost:3000/
 ```
 
 ### Gebruik en kenmerken
-
+Via de API wordt de informatie van de docenten opgehaald en in beeld gebracht. Als eerste wordt de automatische datum weergegeven met legenda. Hieronder staan de docenten weergegeven waar middel een flip geklikt kan worden voor de eerste informatie. Mocht er meer informatie gelezen willen worden dan kan er geklikt worden op 'meer'. Deze button leidt naar de detailpage. Via een andere button kan er weer terug worden gegaan naar de homepage. Verder op de homepage kan er middel de scrollbuttons omhoog of omlaag gedrukt worden. Bij het ingedrukt houden kan er sneller over de pagina gescrold worden. Ook voor als de gebruiker niet bij de bovenste rij met docenten kan komen, kan je door scrollen totdat je er wel bijkomt. Daarna zijn er meerdere filterfuncties te vinden onder het filtermenu. Middels de zoekbalk kan er gezocht worden op bijvoorbeeld hele namen, middels de a t/m z op één letter die in de naam voor komt en middels de vakgebieden voor een specifieke vak. Tot slot zijn er meerdere animaties te vinden om de gebruiker een plezierige ervaring te bieden (deze moet je zelf zoeken, mocht je dit willen weten :-)).
 
 ### Debriefing 
-Om de opdracht duidelijk voor ogen te krijgen, is er een debriefing gemaakt. Ook is deze gecheckt door de opdrachtgever om de opdracht officieel te kunnen starten. Hieronder is de debriefing te zien. 
+Om de opdracht duidelijk voor ogen te krijgen, is er een debriefing gemaakt. Ook is deze naar de opdrachtgever gestuurd om de opdracht officieel te kunnen starten. Hieronder is de debriefing te zien. 
 
 <details>
 <summary>Show!</summary>
@@ -152,11 +203,13 @@ Hoe werkt prismic/accounts aanmaken
 Hoe fullscreen voor optimaal gebruik
 
 
-### Link naar wiki's
+### Link naar wikis
 [Mohamed](https://github.com/lamartm/cmda-smoelenboek/wiki)
 [Mitzy](https://github.com/Mitzyyy/cmda-smoelenboek/wiki)
 
 ### Gedaan en wenslijst
+- [x] Homepagina maken <br/>
+- [x] De application installeren op een online web server (Heroku) <br/>
 
 ### Licentie
 [GNU GPLv3](LICENSE)
