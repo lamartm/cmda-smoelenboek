@@ -96,5 +96,5 @@ function clear() {
 
   setTimeout(() => {
     scrolled = true;
-  }, 5000);
+  }, 30000);
 }

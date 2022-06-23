@@ -5,6 +5,7 @@ import "./digitalKeyboard.js";
 import { checkForSelectedFilters } from "./checkFilteredOptions.js";
 
 const specialtyTeacher = document.querySelectorAll(".specialty-teacher");
+const teacher = document.querySelectorAll(".teacher");
 const searchInput = document.getElementById("search-input");
 
 const filtered3 = document.getElementById("filterSelect3");
@@ -16,6 +17,14 @@ const checkBoxes = document.querySelectorAll("input[name=specialty]");
 const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
 // NAVIGATIE ZOEKEN
+
+document.addEventListener(
+  "contextmenu",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
 searchInput.addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
@@ -33,7 +42,7 @@ searchInput.addEventListener("input", (d) => {
 
 downButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
-    top: 380,
+    top: 180,
     behavior: "smooth",
   });
 });
@@ -43,7 +52,7 @@ let holdState;
 downButton.addEventListener("mousedown", (element) => {
   holdState = setInterval(() => {
     document.querySelector("html").scrollBy({
-      top: 380,
+      top: 180,
       behavior: "smooth",
     });
   }, 500);
@@ -53,9 +62,24 @@ downButton.addEventListener("mouseup", (element) => {
   clearInterval(holdState);
 });
 
+let holdStateTwo;
+
+upButton.addEventListener("mousedown", (element) => {
+  holdStateTwo = setInterval(() => {
+    document.querySelector("html").scrollBy({
+      top: -180,
+      behavior: "smooth",
+    });
+  }, 500);
+});
+
+upButton.addEventListener("mouseup", (element) => {
+  clearInterval(holdStateTwo);
+});
+
 upButton.addEventListener("click", (element) => {
   document.querySelector("html").scrollBy({
-    top: -380,
+    top: -180,
     behavior: "smooth",
   });
 });
@@ -70,7 +94,19 @@ function performMark() {
   });
 }
 
+// SPLIT SCREEN
+
+if (window.location.pathname === "/") {
+  window.onload = () => {
+    window.scrollTo({
+      top: 640,
+      behavior: "smooth",
+    });
+  };
+}
+
 // AUTOMATISCHE DATUM
+
 const getCurrentTimeDate = () => {
   let currentTimeDate = new Date();
 
@@ -143,3 +179,55 @@ const filterOnSpecialty = (e) => {
 checkBoxes.forEach((d) => {
   d.addEventListener("click", filterOnSpecialty);
 });
+
+// TIME OUT FLIP TERUG NAAR HOME
+
+let initial;
+
+function redirectFlip() {
+  Array.from(teacher).forEach((element) => {
+    element.classList.remove("is-flipped");
+  });
+}
+
+document.addEventListener("click", testt);
+window.addEventListener("scroll", testt);
+
+function testt(event) {
+  clearTimeout(initial);
+  initial = setTimeout(redirectFlip, 60000);
+}
+
+// ANIMATIE FLIP
+
+[...teacher].forEach((teacher) => {
+  teacher.addEventListener("click", function () {
+    teacher.classList.toggle("is-flipped");
+  });
+});
+
+// ANIMATIE CONFETTI
+
+confetti();
+
+function confetti() {
+  setTimeout(() => {
+    document.getElementById("confetti-wrapper").style.display = "initial";
+    setTimeout(confettiNone, 10000);
+  });
+}
+
+function confettiNone() {
+  setTimeout(() => {
+    document.getElementById("confetti-wrapper").style.display = "none";
+    setTimeout(confetti, 60000);
+  });
+}
+
+// ANIMATIE RANDOM
+
+function GetValue() {
+  var myarray = new Array("item1", "item2", "item3");
+  var random = myarray[Math.floor(Math.random() * myarray.length)];
+  document.getElementById("light").innerHTML = random;
+}

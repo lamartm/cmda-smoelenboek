@@ -2,29 +2,58 @@
 <div class="container">
     <section class="teachers">
         <h1 id="date"></h1>
+        <header class="noSplit">
+            <h1 id="date"></h1>
+            <div>
+                <p id="legenda"><span></span>Afwezig</p>
+                <p id="legenda2"><span></span>Filter aan</p>
+            </div>
+        </header>   
         <ul class="teachers-container">
         <% for (let i = 0; i < 16; i++) { %>
             <% document.forEach((teacher, index) => { %>
-                <% const encodedURL = "/detail/" + (teacher.data.teachername.length == 0 ? "" : teacher.data.teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
-                <% const specialty = Object.keys(teacher.data.specialiteiten[0]).filter(k => teacher.data.specialiteiten[0][k]) %> 
+                <% const {teacherpic, teachername, vakken, beschrijving, hobbies, beschikbaarheid, email, specialiteiten} = teacher.data %>
+
+                <% const dagen = Object.keys(beschikbaarheid[0]).reduce((currentResult, key) => {
+                    beschikbaarheid[0][key] === true && (currentResult[key] = beschikbaarheid[0][key]);
+
+                    return currentResult;
+                }, {}); %> 
+
+                <% const dagenArray = Object.keys(dagen) %> 
+                <% const dagenCapital = dagenArray.map(d => d.charAt(0).toUpperCase() + d.substr(1)) %>
+                <% const dagenString = dagenCapital.join(', '); %>
+
+                <% const encodedURL = "/detail/" + (teachername.length == 0 ? "" : teachername[0].text).replace(/\s+/g, '-').toLowerCase() %>
+                <% const specialty = Object.keys(specialiteiten[0]).filter(k => specialiteiten[0][k]) %> 
                 
-                <% if(teacher.data.beschikbaarheid[0][currentDate] === false) { %> 
+                <% if(beschikbaarheid[0][currentDate] === false) { %> 
                     <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
-                        <a href="<%= encodedURL %>" class="teacher-link">
                             <article class="teacher bck-grey">
-                                <img src="<%- teacher.data.teacherpic.url %>" class="pic-size unavailable"/>
-                                <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                                <div class="card__face card__face--front">
+                                    <img src="<%- teacherpic.url %>" class="pic-size unavailable"/>
+                                    <h1 class="teacher-name"><%- teachername.length == 0 ? "None" : teachername[0].text %></h1>
+                                </div>
+
+                                <div class="card__face card__face--back">
+                                    <h1 class="teacher-name"><%- dagenString === "" ? "None" : `Beschikbaar op: ${dagenString}` %></h1>
+                                    <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+                                </div>
                             </article>
-                        </a>
                     </li>
                 <% } else{ %> 
                     <li class="specialty-teacher" data-value="<%- specialty %>" data-pos="<%- index + 1 %>">
-                        <a href="<%= encodedURL %>" class="teacher-link">
                             <article class="teacher">
-                                <img src="<%- teacher.data.teacherpic.url %>" class="pic-size"/>
-                                <h1 class="teacher-name"><%- teacher.data.teachername.length == 0 ? "None" : teacher.data.teachername[0].text %></h1>
+                                <div class="card__face card__face--front">
+                                    <img src="<%- teacherpic.url %>" class="pic-size"/>
+                                    <h1 class="teacher-name"><%- teachername.length == 0 ? "None" : teachername[0].text %></h1>
+                                </div>
+
+                                <div class="card__face card__face--back">
+                                    <h1 class="teacher-name"><%- dagenString === "" ? "None" : `Beschikbaar op: ${dagenString}` %></h1>
+                                    <a href="<%= encodedURL %>" class="teacher-link"><button class="button-detail">Meer</button></a>
+                                </div>
                             </article>
-                        </a>
                     </li>
                 <% } %> 
             <% }) %>
@@ -33,56 +62,36 @@
     </section>
 </div>
 
-<fieldset id="specialty-filter">
-    <div>
-      <input type="checkbox" id="UX" name="specialty" value="UX">
-      <label for="UX">UX</label>
-    </div>
-    <div>
-      <input type="checkbox" id="Tech" name="specialty" value="Tech">
-      <label for="Tech">Tech</label>
-    </div>
-    <div>
-      <input type="checkbox" id="UI" name="specialty" value="UI">
-      <label for="UI">UI</label>
-    </div>
-    <div>
-       <input type="checkbox" id="Maatschappij" name="specialty" value="Maatschappij">
-       <label for="Maatschappij">Maatschappij</label>
-    </div>
-    <div>
-       <input type="checkbox" id="Vormgeving" name="specialty" value="Vormgeving">
-       <label for="Vormgeving">Vormgeving</label>
-    </div>
-    <div>
-       <input type="checkbox" id="Staff" name="specialty" value="Staff">
-       <label for="Staff">Staff</label>
-    </div>
-</fieldset>
-
-<button id="filter"><img class="icon" src="/images/filter.svg"> <div class="filterSelect" id="filterSelect3" /></button>
-<div class="filter-pos-container">
-    <button id="alphabet-filter-btn">A-Z <div class="filterSelect" id="filterSelect2" /></button>
-    <button id="filters">
-        <img class="icon" src="/images/filters.svg">
-        <div class="filterSelect" id="filterSelect4" />
-    </button>
-    <form id="search-teacher">
-        <button id="search-teacher-btn" type="submit"><img class="icon" src="/images/magnifying.svg"> <div class="filterSelect" id="filterSelect1" /></button>
-        <input id="search-input" class="input" type="text" placeholder="Zoek voor een leeraar" autocomplete="off">
-        <div id="keyboard-bg"></div>
-        <div id="keyboard" class="simple-keyboard"></div>
-    </form>
-    <fieldset id="alphabet-filter">
-        <input class="letterInput" type="radio" id="All" name="alphabet" value="All" />
-        <label class="letterLabel" for="All">All</label>
-    </fieldset>
-</div>
+<%- include ("./partials/filters.ejs") %>
 
 <nav>
     <button id="upButton"><img class="icon" src="/images/up.svg"></button>
     <button id="downButton"><img class="icon" src="/images/down.svg"></button>
 </nav>
+
+<!-- <input type="checkbox" checked="checked" class="toggle" onclick="GetValue();" >
+    <div class="switch"></div>
+    <div id="light"></div> -->
+
+
+
+<div id="confetti-wrapper">
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
+
+</main>
 
 <script type="module" src="/js/home.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

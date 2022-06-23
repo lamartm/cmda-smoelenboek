@@ -34,6 +34,14 @@ const titleTiming = {
   iterations: 1,
 };
 
+document.addEventListener(
+  "contextmenu",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
+
 teacherName.addEventListener("click", () => {
   count++;
   teacherName.animate(titleShaking, titleTiming);
@@ -43,3 +51,19 @@ teacherName.addEventListener("click", () => {
     imgAnimation2.animate(extraImg2Moving, extraImgTiming);
   }
 });
+
+// TIME OUT DETAIL TERUG NAAR HOME
+
+function redirect() {
+  window.location.href = "/";
+}
+var initial = setTimeout(redirect, 60000);
+document.addEventListener("click", test);
+window.addEventListener("scroll", test);
+
+function test(event) {
+  console.log(initial);
+  clearTimeout(initial);
+  console.log(initial);
+  initial = setTimeout(redirect, 60000);
+}

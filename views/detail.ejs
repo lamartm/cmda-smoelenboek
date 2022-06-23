@@ -1,10 +1,10 @@
 <%- include ("./partials/head.ejs") %>
 
-<% const {teacherpic, teachername, vakken, beschrijving, hobbies, beschikbaarheid, email} = document.data %>
+<% const {teacherpic, teachername, vakken, beschrijving, hobbies, beschikbaarheid, email, easteregg, easteregg2} = document.data %>
 
 <% const dagen = Object.keys(beschikbaarheid[0]).reduce((currentResult, key) => {
-    console.log(currentResult)
-    console.log(key)
+    console.log(easteregg.url)
+    console.log(easteregg2)
     beschikbaarheid[0][key] === true && (currentResult[key] = beschikbaarheid[0][key]);
 
     return currentResult;
@@ -23,21 +23,25 @@
         <div class="teacher-info-pic">
             <img src="<%- teacherpic.url %>">
         </div>
-        <div>
-            <h1 id="teacher-info-name"><%- teachername[0].text %></h1>
-            <h2>Beschikbaarheid</h2>
-            <p><%- dagenString === "" ? "None" : dagenString %></p>
-            <h2>Email</h2>
-            <p><%- email.length === 0 ? "None" : email[0].text %></p>
-            <h2>Vakken</h2>
-            <p><%- vakken.length === 0 ? "None" : vakken[0].text %></p>
-            <h2>Beschrijving</h2>
-            <p class="beschrijving-leeraar"><%- beschrijving.length === 0 ? "None" : beschrijving[0].text %></p>
-            <h2>Hobbies</h2>
-            <p><%- hobbies.length === 0 ? "None" : hobbies[0].text %></p>
+        <div class="flex">
+            <article class="teacher-basic-info">
+                <h1 id="teacher-info-name"><%- teachername[0].text %></h1>
+                <h2>Beschikbaarheid</h2>
+                <p><%- dagenString === "" ? "None" : dagenString %></p>
+                <h2>Email</h2>
+                <p><%- email.length === 0 ? "None" : email[0].text %></p>
+            </article>
+            <article>
+                <h2>Vakken</h2>
+                <p><%- vakken.length === 0 ? "None" : vakken[0].text %></p>
+                <h2>Beschrijving</h2>
+                <p class="beschrijving-leeraar"><%- beschrijving.length === 0 ? "None" : beschrijving[0].text %></p>
+                <h2>Hobbies</h2>
+                <p><%- hobbies.length === 0 ? "None" : hobbies[0].text %></p>
+            </article>
         </div>
-        <img id="extra-img-animation" class="extraImg" src="/images/puppy.jpg">
-        <img id="extra-img-animation2" class="extraImg" src="/images/puppy2.jpg">
+        <img id="extra-img-animation" class="extraImg" src="<%- easteregg.url === undefined ? "/images/puppy.jpg" : easteregg.url %>">
+        <img id="extra-img-animation2" class="extraImg" src="<%- easteregg2.url === undefined ? "/images/puppy2.jpg" : easteregg2.url %>">
     </article>
 </section>
 

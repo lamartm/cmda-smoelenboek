@@ -3,8 +3,10 @@ const searchInput = document.getElementById("search-input");
 const all = document.getElementById("All");
 const checkBoxes = document.querySelectorAll("input[name=specialty]");
 
+const filtered1 = document.getElementById("filterSelect1");
 const filtered2 = document.getElementById("filterSelect2");
 const filtered3 = document.getElementById("filterSelect3");
+const filtered4 = document.getElementById("filterSelect4");
 
 let resetTimeout = [];
 let clearFilters = [];
@@ -26,12 +28,14 @@ function stopAnimation() {
     scrolled = false;
     count = 0;
 
-    clearTimeout(clearFilters);
+    resetTimeoutFunc(clearFilters);
     clearFilters.push(
       setTimeout(() => {
         all.checked = true;
+        filtered1.style.display = "none";
         filtered2.style.display = "none";
         filtered3.style.display = "none";
+        filtered4.style.display = "none";
 
         Array.from(checkBoxes).forEach((element) => {
           element.checked = false;
@@ -43,7 +47,7 @@ function stopAnimation() {
         });
 
         searchInput.value = "";
-      }, 60000)
+      }, 10000)
     );
 
     resetTimeoutFunc(resetTimeout);
