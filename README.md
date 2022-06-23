@@ -207,8 +207,8 @@ Hoe fullscreen voor optimaal gebruik
 ### Link naar wikis
 De product biografie en reflectie op eigen niveau zijn individueel beschreven. Hieronder staan de links naar beide wiki's om meer over de individuele processen te lezen.
 
-[Mohamed](https://github.com/lamartm/cmda-smoelenboek/wiki) <br/>
-[Mitzy](https://github.com/Mitzyyy/cmda-smoelenboek/wiki)
+- [Mohamed](https://github.com/lamartm/cmda-smoelenboek/wiki) <br/>
+- [Mitzy](https://github.com/Mitzyyy/cmda-smoelenboek/wiki)
 
 ### Gedaan en wenslijst
 - [x] Homepagina maken <br/>
