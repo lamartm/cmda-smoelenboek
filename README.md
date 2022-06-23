@@ -237,3 +237,8 @@ De product biografie en reflectie op eigen niveau zijn individueel beschreven. H
 - Mozilla. (2022a, april 5). scroll-snap-type - CSS: Cascading Style Sheets | MDN. Geraadpleegd op 1 juni 2022, van (https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type)
 - Mozilla. (2022b, mei 31). Element.scrollLeft - Web APIs | MDN. Geraadpleegd op 1 juni 2022, van (https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft)
 - Stack Overflow. (2019, 16 augustus). CSS Scroll Snap Points with navigation (next, previous) buttons. Geraadpleegd op 1 juni 2022, van (https://stackoverflow.com/questions/57518428/css-scroll-snap-points-with-navigation-next-previous-buttons)
+- M. (2022). GitHub - Mitzyyy/Drag-en-drop-lijst: In deze module van de minor Web Design & Development leer ik om een website te ontwerpen en bouwen voor echte mensen met behulp van gebruikerstesten en een interactive design proces. GitHub. Geraadpleegd op 8 juni 2022, van (https://github.com/Mitzyyy/Drag-en-drop-lijst)
+- W3Schools. (2022). Window setTimeout() Method. Geraadpleegd op 8 juni 2022, van (https://www.w3schools.com/jsref/met_win_settimeout.asp)
+- W3Schools. (2022a). HTML DOM Document addEventListener() Method. Geraadpleegd op 15 juni 2022, van (https://www.w3schools.com/jsref/met_document_addeventlistener.asp)
+- Meracle. (2022). Attention Required! | Cloudflare. CodePen. Geraadpleegd op 15 juni 2022, van (https://codepen.io/meracle/pen/OJWQpVR)
+- W3Schools. (2022a). How To Create a Flip Card with CSS. Geraadpleegd op 15 juni 2022, van (https://www.w3schools.com/howto/howto_css_flip_card.asp)
