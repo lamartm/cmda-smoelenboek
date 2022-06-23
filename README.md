@@ -200,13 +200,16 @@ Bij de eerste iteratie ontstond al het idee om twee scrollbuttons voor omlaag en
 Het begonn met meerdere filters in de footer van het scherm. Dit week uit van links tot een filter rechts. Tijdens het testen was al snel opgemerkt dat alle filters te ver uit elkaar stonden waardoor niet overzichtelijk was dat manieren waren van zoeken. Later is er hier een speciaal menu voor gemaakt om de gebruiksvriendelijkheid te vergroten. Het is hierdoor duidelijker dat onder één knop meerdere filters staan en hierdoor op verschillende manieren gezocht naar docenten kan worden. Daarbij geeft dit minder chaos op het scherm. 
 
 <b> - A t/m Z filter </b> <br/>
+Via de a t/m z filter is voor een bijvoorbeeld een case als: 'ik weet wel welke letter die persoon in zijn naam had, maar voor de rest weet ik het niet'. Op deze manier kan er gezocht worden op een specifieke letter. 
 
 <b> - Zoek filter </b> <br/>
+Als de gebruiker al de naam van de persoon weet, maar bijvoorbeeld meer over die docent te weten wilt komen (bijvoorbeeld als collega zijne), kan er via de zoekbalk meteen op naam gefilterd worden. 
 
 <b> - Vakgebied filter </b> <br/>
+De filter met specifieke vakgebieden is gebouwd vanwege cases als 'ik heb als student hulp nodig bij een specifiek vakgebied, maar weet niet welke docent ik hiervoor kan benaderen' of 'ik weet in welk vakgebied die docent gespecialiseerd is, maar weet zijn naam niet'. Via deze weg is het zoeken via specialisatie mogelijk. 
 
 <b> - Navigatie </b> <br/>
-links
+Doordat in eerste instantie de filters en de navigatie op verschillende plekken onderaan de pagina stonden, bleek uit een test dat de gebruiker heen en weer moest lopen om het smoelenboek te gebruiken. Aangezien dit niet gebruiksvriendelijk is, is er de keuze gemaakt alle navigatie aan de linkerkant te plaatsen. 
 
 <b> - Usability ruimte </b> <br/>
 
