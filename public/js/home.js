@@ -24,13 +24,13 @@ const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
 // NAVIGATIE ZOEKEN
 
-// document.addEventListener(
-//   "contextmenu",
-//   function (e) {
-//     e.preventDefault();
-//   },
-//   false
-// );
+document.addEventListener(
+  "contextmenu",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
 searchInput.addEventListener("input", (d) => {
   const currentSearch = document.getElementById("search-input").value;
