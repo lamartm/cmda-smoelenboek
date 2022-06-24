@@ -22,7 +22,7 @@ const checkBoxes = document.querySelectorAll("input[name=specialty]");
 
 const markInstance = new Mark(document.querySelectorAll(".teacher-name"));
 
-// NAVIGATIE ZOEKEN
+// FILTER ZOEKBALK
 
 document.addEventListener(
   "contextmenu",
