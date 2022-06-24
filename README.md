@@ -673,6 +673,7 @@ De product biografie en reflectie op eigen niveau zijn individueel beschreven. H
 - [ ] Visueel maken van beschikbaarheid <br/>
 - [ ] Focusstate aanpassen naar ronde vorm bij scrollen <br/>
 - [ ] Animatie eastereggs verschillende richtingen op laten gaan <br/>
+- [ ] Button centreren pagina na scrollen <br/>
 - [ ] Detailpage verder uitbreiden <br/>
 - [ ] Inlogsysteem verder uitbreiden <br/>
 
